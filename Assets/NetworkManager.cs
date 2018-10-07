@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class NetworkManager : MonoBehaviour
 {
-
     private const string roomName = "RoomName";
-    private TypedLobby lobbyName = new TypedLobby("New_Lobby", LobbyType.Default);
+    private TypedLobby lobbyName = new TypedLobby("Ano_eerrretbytttttttttttt", LobbyType.Default);
     private RoomInfo[] roomsList;
     public GameObject player;
     // Use this for initialization
@@ -14,13 +14,6 @@ public class NetworkManager : MonoBehaviour
     {
         PhotonNetwork.ConnectUsingSettings("v4.2");
     }
-
-    //Update is called once per frame
-    void Update()
-    {
-
-    }
-
     void OnGUI()
     {
         if (!PhotonNetwork.connected)
@@ -31,14 +24,13 @@ public class NetworkManager : MonoBehaviour
         {
             if (GUI.Button(new Rect(100, 100, 250, 100), "Start Server"))
             {
-                PhotonNetwork.CreateRoom(roomName, new RoomOptions()
-                { MaxPlayers = 4, IsOpen = true, IsVisible = true }, lobbyName);
+                PhotonNetwork.CreateRoom(roomName, new RoomOptions() { MaxPlayers = 4, IsOpen = true, IsVisible = true }, lobbyName);
             }
             if (roomsList != null)
             {
                 for (int i = 0; i < roomsList.Length; i++)
                 {
-                    if (GUI.Button(new Rect(100, 250 + (110 * i), 250, 100), "Join" + roomsList[i].Name))
+                    if (GUI.Button(new Rect(100, 250 + (110 * i), 250, 100), "Join " + roomsList[i].Name))
                     {
                         PhotonNetwork.JoinRoom(roomsList[i].Name);
                     }
@@ -46,8 +38,6 @@ public class NetworkManager : MonoBehaviour
             }
         }
     }
-
-
     void OnConnectedToMaster()
     {
         PhotonNetwork.JoinLobby(lobbyName);
@@ -55,6 +45,7 @@ public class NetworkManager : MonoBehaviour
     void OnReceivedRoomListUpdate()
     {
         Debug.Log("Room was created");
+        roomsList = PhotonNetwork.GetRoomList();
     }
     void OnJoinedLobby()
     {
@@ -65,5 +56,5 @@ public class NetworkManager : MonoBehaviour
         Debug.Log("Connected to Room");
         PhotonNetwork.Instantiate(player.name, Vector3.up * 5, Quaternion.identity, 0);
     }
-
 }
+
