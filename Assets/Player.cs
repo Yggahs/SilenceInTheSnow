@@ -58,6 +58,11 @@ public class Player : Photon.MonoBehaviour {
             GetComponent<Rigidbody>().MovePosition(GetComponent<Rigidbody>().position + Vector3.right * speed * Time.deltaTime);
         if (Input.GetKey(KeyCode.A))
             GetComponent<Rigidbody>().MovePosition(GetComponent<Rigidbody>().position - Vector3.right * speed * Time.deltaTime);
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            GetComponent<Rigidbody>().MovePosition(GetComponent<Rigidbody>().position + Vector3.up * 2 /** Time.deltaTime*/);
+            Debug.Log("jumping");
+        }
     }
 
     private void SyncedMovement()
