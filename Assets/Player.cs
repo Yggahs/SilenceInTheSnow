@@ -9,6 +9,12 @@ public class Player : Photon.MonoBehaviour {
     private float syncTime = 0f;
     private Vector3 syncStartPosition = Vector3.zero;
     private Vector3 syncEndPosition = Vector3.zero;
+    //relative movement
+    public Transform cam;
+    public Transform camPivot;
+    float heading = 0;
+
+    Vector2 input;
     // Use this for initialization
     void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
@@ -31,7 +37,22 @@ public class Player : Photon.MonoBehaviour {
 
     void Awake()
     {
-        lastSynchronizationTime = Time.time;    
+        cam = GetComponent<Transform>();
+        camPivot = GetComponent<Transform>();
+        lastSynchronizationTime = Time.time;  
+        
+    }
+
+    private void Start()
+    {
+
+        if (photonView.isMine)
+        {
+            Camera.main.transform.position = this.transform.position - this.transform.forward * 10 + this.transform.up * 3;
+            Camera.main.transform.LookAt(this.transform.position);
+            Camera.main.transform.parent = this.transform;
+            
+        }
     }
 
     // Update is called once per frame
@@ -39,30 +60,51 @@ public class Player : Photon.MonoBehaviour {
     {
         if (photonView.isMine)
         {
+            
             InputMovement();
+
             InputColorChange();
         }
         else
         {
             SyncedMovement();
         }
-	}
+
+        
+
+        //Debug.Log();
+    }
 
     void InputMovement()
     {
-        if (Input.GetKey(KeyCode.W))
-            GetComponent<Rigidbody>().MovePosition(GetComponent<Rigidbody>().position + Vector3.forward * speed * Time.deltaTime);
-        if (Input.GetKey(KeyCode.S))
-            GetComponent<Rigidbody>().MovePosition(GetComponent<Rigidbody>().position - Vector3.forward * speed * Time.deltaTime);
-        if (Input.GetKey(KeyCode.D))
-            GetComponent<Rigidbody>().MovePosition(GetComponent<Rigidbody>().position + Vector3.right * speed * Time.deltaTime);
-        if (Input.GetKey(KeyCode.A))
-            GetComponent<Rigidbody>().MovePosition(GetComponent<Rigidbody>().position - Vector3.right * speed * Time.deltaTime);
+        //if (Input.GetKey(KeyCode.W))
+        //    GetComponent<Rigidbody>().MovePosition(GetComponent<Rigidbody>().position + Vector3.forward * speed * Time.deltaTime);
+        //if (Input.GetKey(KeyCode.S))
+        //    GetComponent<Rigidbody>().MovePosition(GetComponent<Rigidbody>().position - Vector3.forward * speed * Time.deltaTime);
+        //if (Input.GetKey(KeyCode.D))
+        //    GetComponent<Rigidbody>().MovePosition(GetComponent<Rigidbody>().position + Vector3.right * speed * Time.deltaTime);
+        //if (Input.GetKey(KeyCode.A))
+        //    GetComponent<Rigidbody>().MovePosition(GetComponent<Rigidbody>().position - Vector3.right * speed * Time.deltaTime);
+        heading += Input.GetAxis("Mouse X") * Time.deltaTime * 100;
+        camPivot.rotation = Quaternion.Euler(0, heading, 0);
+
+        input = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        input = Vector2.ClampMagnitude(input, 1);
+
+        Vector3 camF = cam.forward;
+        Vector3 camR = cam.right;
+
+        camF.y = 0;
+        camR.y = 0;
+        camF = camF.normalized;
+        camR = camR.normalized;
+
+
+        transform.position += (camF * input.y + camR * input.x);
         if (Input.GetKeyDown(KeyCode.Space))
-        {
             GetComponent<Rigidbody>().MovePosition(GetComponent<Rigidbody>().position + Vector3.up * 2 /** Time.deltaTime*/);
-            Debug.Log("jumping");
-        }
+     
+        
     }
 
     private void SyncedMovement()
@@ -78,6 +120,8 @@ public class Player : Photon.MonoBehaviour {
             ChangeColorTo(new Vector3(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f)));
         }
     }
+
+
     [PunRPC]
     void ChangeColorTo(Vector3 color)
     {
