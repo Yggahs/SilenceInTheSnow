@@ -6,7 +6,7 @@ using UnityEngine;
 public class NetworkManager : MonoBehaviour
 {
     private const string roomName = "RoomName";
-    private TypedLobby lobbyName = new TypedLobby("Ano_eerrretbytttttttttttt", LobbyType.Default);
+    private TypedLobby lobbyName = new TypedLobby("Canvas_of_white", LobbyType.Default);
     private RoomInfo[] roomsList;
     public GameObject player;
     // Use this for initialization

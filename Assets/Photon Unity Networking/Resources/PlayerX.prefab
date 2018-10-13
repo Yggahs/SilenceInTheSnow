@@ -151,6 +151,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d02e6f62690034428ed67e17a305883, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 0.3
   cam: {fileID: 4024420709500142, guid: 8c305f4056674e74fa37bcd2c188431f, type: 2}
   camPivot: {fileID: 4797823156333708, guid: 8c305f4056674e74fa37bcd2c188431f, type: 2}

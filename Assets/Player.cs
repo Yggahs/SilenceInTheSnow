@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : Photon.MonoBehaviour {
-    public float speed = 10f;
+    public float speed = 1f; // 1 is very fast
     private float lastSynchronizationTime = 0f;
     private float syncDelay = 0f;
     private float syncTime = 0f;
     private Vector3 syncStartPosition = Vector3.zero;
     private Vector3 syncEndPosition = Vector3.zero;
+
+    private Quaternion syncStartPositionR = Quaternion.Euler(Vector3.zero);
+    private Quaternion syncEndPositionR = Quaternion.Euler(Vector3.zero);
     //relative movement
     public Transform cam;
     public Transform camPivot;
@@ -22,16 +25,21 @@ public class Player : Photon.MonoBehaviour {
         {
             stream.SendNext(GetComponent<Rigidbody>().position);
             stream.SendNext(GetComponent<Rigidbody>().velocity);
+            stream.SendNext(GetComponent<Rigidbody>().rotation); //added for rotation
         }
         else
         {
             Vector3 syncPosition = (Vector3)stream.ReceiveNext();
             Vector3 syncVelocity = (Vector3)stream.ReceiveNext();
+            Quaternion syncRotation = (Quaternion)stream.ReceiveNext(); //sync object's rotation
+            
             syncTime = 0f;
             syncDelay = Time.time - lastSynchronizationTime;
             lastSynchronizationTime = Time.time;
             syncEndPosition = syncPosition + syncVelocity * syncDelay;
+            syncEndPositionR = syncRotation * Quaternion.Euler(syncVelocity * syncDelay); //object start position for rotation
             syncStartPosition = GetComponent<Rigidbody>().position;
+            syncStartPositionR = GetComponent<Rigidbody>().rotation; //object start position for rotation
         }
 	}
 
@@ -69,22 +77,10 @@ public class Player : Photon.MonoBehaviour {
         {
             SyncedMovement();
         }
-
-        
-
-        //Debug.Log();
     }
 
-    void InputMovement()
+    void InputMovement() //camera relative movement
     {
-        //if (Input.GetKey(KeyCode.W))
-        //    GetComponent<Rigidbody>().MovePosition(GetComponent<Rigidbody>().position + Vector3.forward * speed * Time.deltaTime);
-        //if (Input.GetKey(KeyCode.S))
-        //    GetComponent<Rigidbody>().MovePosition(GetComponent<Rigidbody>().position - Vector3.forward * speed * Time.deltaTime);
-        //if (Input.GetKey(KeyCode.D))
-        //    GetComponent<Rigidbody>().MovePosition(GetComponent<Rigidbody>().position + Vector3.right * speed * Time.deltaTime);
-        //if (Input.GetKey(KeyCode.A))
-        //    GetComponent<Rigidbody>().MovePosition(GetComponent<Rigidbody>().position - Vector3.right * speed * Time.deltaTime);
         heading += Input.GetAxis("Mouse X") * Time.deltaTime * 100;
         camPivot.rotation = Quaternion.Euler(0, heading, 0);
 
@@ -100,9 +96,10 @@ public class Player : Photon.MonoBehaviour {
         camR = camR.normalized;
 
 
-        transform.position += (camF * input.y + camR * input.x);
+        transform.position += ((camF * input.y + camR * input.x)*speed); //speed of player is determined by number that multiplies the first equation
+
         if (Input.GetKeyDown(KeyCode.Space))
-            GetComponent<Rigidbody>().MovePosition(GetComponent<Rigidbody>().position + Vector3.up * 2 /** Time.deltaTime*/);
+            GetComponent<Rigidbody>().MovePosition(GetComponent<Rigidbody>().position + Vector3.up * 2);
      
         
     }
@@ -111,6 +108,7 @@ public class Player : Photon.MonoBehaviour {
     {
         syncTime += Time.deltaTime;
         GetComponent<Rigidbody>().position = Vector3.Lerp(syncStartPosition, syncEndPosition, syncTime / syncDelay);
+        GetComponent<Rigidbody>().rotation = Quaternion.Lerp(syncStartPositionR, syncEndPositionR, syncTime / syncDelay); //apply synced rotation
     }
 
     void InputColorChange()
