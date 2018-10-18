@@ -1,5 +1,74 @@
 Base path: C:/Program Files/Unity/Editor/Data
 Cmd: initializeCompiler
+Cmd: disassembleShader
+  api=4 insize=1894 outsize=3310 ok=1
+Cmd: disassembleShader
+  api=4 insize=1638 outsize=2982 ok=1
+Cmd: disassembleShader
+  api=4 insize=6918 outsize=9813 ok=1
+Cmd: disassembleShader
+  api=4 insize=1918 outsize=3420 ok=1
+Cmd: disassembleShader
+  api=4 insize=3742 outsize=5518 ok=1
+Cmd: disassembleShader
+  api=4 insize=3934 outsize=5759 ok=1
+Cmd: disassembleShader
+  api=4 insize=1550 outsize=2835 ok=1
+Cmd: disassembleShader
+  api=4 insize=2514 outsize=4464 ok=1
+Cmd: disassembleShader
+  api=4 insize=1746 outsize=3138 ok=1
+Cmd: disassembleShader
+  api=4 insize=3070 outsize=4936 ok=1
+Cmd: disassembleShader
+  api=4 insize=2710 outsize=4530 ok=1
+Cmd: disassembleShader
+  api=4 insize=2814 outsize=4716 ok=1
+Cmd: disassembleShader
+  api=4 insize=2070 outsize=3593 ok=1
+Cmd: disassembleShader
+  api=4 insize=2334 outsize=4097 ok=1
+Cmd: disassembleShader
+  api=4 insize=2218 outsize=3818 ok=1
+Cmd: initializeCompiler
+Cmd: initializeCompiler
+Cmd: initializeCompiler
+Cmd: initializeCompiler
+Cmd: initializeCompiler
+Cmd: initializeCompiler
+Cmd: initializeCompiler
+Cmd: initializeCompiler
+Cmd: initializeCompiler
+Cmd: initializeCompiler
+Cmd: initializeCompiler
+Cmd: initializeCompiler
+Cmd: initializeCompiler
+Cmd: initializeCompiler
+Cmd: initializeCompiler
+Cmd: initializeCompiler
+Cmd: initializeCompiler
+Cmd: initializeCompiler
+Cmd: initializeCompiler
+Cmd: initializeCompiler
+Cmd: initializeCompiler
+Cmd: initializeCompiler
+Cmd: initializeCompiler
+Cmd: initializeCompiler
+Cmd: initializeCompiler
+Cmd: initializeCompiler
+Cmd: initializeCompiler
+Cmd: initializeCompiler
+Cmd: initializeCompiler
+Cmd: initializeCompiler
+Cmd: initializeCompiler
+Cmd: initializeCompiler
+Cmd: initializeCompiler
+Cmd: initializeCompiler
+Cmd: initializeCompiler
+Cmd: initializeCompiler
+Cmd: initializeCompiler
+Cmd: initializeCompiler
+Cmd: initializeCompiler
 Cmd: initializeCompiler
 Cmd: initializeCompiler
 Cmd: initializeCompiler

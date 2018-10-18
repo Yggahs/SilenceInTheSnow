@@ -18,6 +18,10 @@ public class Player : Photon.MonoBehaviour {
     float heading = 0;
 
     Vector2 input;
+
+    //test blood
+    public GameObject bulletPrefab;
+    public Transform bulletSpawn;
     // Use this for initialization
     void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
@@ -77,6 +81,11 @@ public class Player : Photon.MonoBehaviour {
         {
             SyncedMovement();
         }
+
+        if (Input.GetKeyDown(KeyCode.R))
+            {
+            Fire();
+        }
     }
 
     void InputMovement() //camera relative movement
@@ -119,6 +128,17 @@ public class Player : Photon.MonoBehaviour {
         }
     }
 
+    void Fire()
+    {
+        var bullet = (GameObject)Instantiate
+            (
+            bulletPrefab,
+            bulletSpawn.position,
+            bulletSpawn.rotation
+            );
+        bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 6;
+        Destroy(bullet, 2.0f);
+    }
 
     [PunRPC]
     void ChangeColorTo(Vector3 color)

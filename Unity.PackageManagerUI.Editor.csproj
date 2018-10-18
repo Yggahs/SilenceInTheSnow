@@ -409,6 +409,11 @@
     <None Include="Assets\Photon Unity Networking\readme.txt" />
     <None Include="Assets\Plugins\Photon3Unity3D.xml" />
     <None Include="Assets\Plugins\release_history.txt" />
+    <None Include="Assets\Splatoonity\Shaders\Resources\SplatBlit.shader" />
+    <None Include="Assets\Splatoonity\Shaders\Resources\WorldBinormalUnwrap.shader" />
+    <None Include="Assets\Splatoonity\Shaders\Resources\WorldPosUnwrap.shader" />
+    <None Include="Assets\Splatoonity\Shaders\Resources\WorldTangentUnwrap.shader" />
+    <None Include="Assets\Splatoonity\Shaders\SplatShader.shader" />
     <None Include="Packages\com.unity.package-manager-ui\Editor\Resources\Styles\Main_Dark.uss" />
     <None Include="Packages\com.unity.package-manager-ui\Editor\Resources\Styles\Main_Light.uss" />
     <None Include="Packages\com.unity.package-manager-ui\Editor\Resources\Templates\Alert.uxml" />

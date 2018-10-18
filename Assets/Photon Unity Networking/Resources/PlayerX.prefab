@@ -246,3 +246,6 @@ MonoBehaviour:
   speed: 0.3
   cam: {fileID: 0}
   camPivot: {fileID: 0}
+  bulletPrefab: {fileID: 1297777264866016, guid: 046eaaf7db833e845ad5f0a2bded3334,
+    type: 2}
+  bulletSpawn: {fileID: 4859411927900010}
