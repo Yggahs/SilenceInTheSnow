@@ -82,10 +82,7 @@ public class Player : Photon.MonoBehaviour {
             SyncedMovement();
         }
 
-        if (Input.GetKeyDown(KeyCode.R))
-            {
-            Fire();
-        }
+        
     }
 
     void InputMovement() //camera relative movement
@@ -109,8 +106,10 @@ public class Player : Photon.MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.Space))
             GetComponent<Rigidbody>().MovePosition(GetComponent<Rigidbody>().position + Vector3.up * 2);
-     
-        
+        if (Input.GetKeyDown(KeyCode.E))
+            Fire();
+
+
     }
 
     private void SyncedMovement()

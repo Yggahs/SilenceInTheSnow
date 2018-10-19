@@ -62,17 +62,19 @@ public class SplatMakerExample : MonoBehaviour {
 				newSplat.splatMatrix = newSplatObject.transform.worldToLocalMatrix;
 				newSplat.channelMask = channelMask;
 
-				float splatscaleX = 1.0f / splatsX;
-				float splatscaleY = 1.0f / splatsY;
-				float splatsBiasX = Mathf.Floor( Random.Range(0,splatsX * 0.99f) ) / splatsX;
-				float splatsBiasY = Mathf.Floor( Random.Range(0,splatsY * 0.99f) ) / splatsY;
+                float splatscaleX = 1.0f / splatsX;
+                float splatscaleY = 1.0f / splatsY;
+                float splatsBiasX = Mathf.Floor(Random.Range(0, splatsX * 0.99f)) / splatsX;
+                float splatsBiasY = Mathf.Floor(Random.Range(0, splatsY * 0.99f)) / splatsY;
 
-				newSplat.scaleBias = new Vector4(splatscaleX, splatscaleY, splatsBiasX, splatsBiasY );
+                
+
+                newSplat.scaleBias = new Vector4(splatscaleX, splatscaleY, splatsBiasX, splatsBiasY );
 
 				SplatManagerSystem.instance.AddSplat (newSplat);
 
 				GameObject.Destroy( newSplatObject );
-                Debug.Log("Crea Splat");
+                
 			}
 		}
 	

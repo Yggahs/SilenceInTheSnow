@@ -18,8 +18,11 @@ public class SplatManagerSystem
 	static SplatManagerSystem m_Instance;
 	static public SplatManagerSystem instance {
 		get {
-			if (m_Instance == null)
-				m_Instance = new SplatManagerSystem();
+            if (m_Instance == null)
+            {
+                
+                m_Instance = new SplatManagerSystem();
+            }
 			return m_Instance;
 		}
 	}
@@ -244,7 +247,7 @@ public class SplatManager : MonoBehaviour {
 			}
             
         }
-        Debug.Log("Painting");
+        
     }
 		
 	// Update the scores by mipping the splat texture down to a 4x4 texture and sampling the pixels.
@@ -300,7 +303,7 @@ public class SplatManager : MonoBehaviour {
 			SplatManagerSystem.instance.scores = scores;
 
 			yield return new WaitForSeconds (1.0f);
-            Debug.Log("Updating Scores");
+            
         }
         
 	}

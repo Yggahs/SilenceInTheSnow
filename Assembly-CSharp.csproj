@@ -61,6 +61,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\CollisionWithBlood.cs" />
     <Compile Include="Assets\NetworkManager.cs" />
     <Compile Include="Assets\Photon Unity Networking\Demos\Demo2DJumpAndRunWithPhysics\Scripts\Demo2DJumpAndRun.cs" />
     <Compile Include="Assets\Photon Unity Networking\Demos\Demo2DJumpAndRunWithPhysics\Scripts\JumpAndRunMovement.cs" />
@@ -206,13 +207,22 @@
     <Compile Include="Assets\PhotonChatApi\ChatUserStatus.cs" />
     <Compile Include="Assets\PhotonChatApi\IChatClientListener.cs" />
     <Compile Include="Assets\Player.cs" />
+    <Compile Include="Assets\Splatoonity\Scripts\MatchEditorCamera.cs" />
+    <Compile Include="Assets\Splatoonity\Scripts\Menu.cs" />
+    <Compile Include="Assets\Splatoonity\Scripts\SplatMakerExample.cs" />
+    <Compile Include="Assets\Splatoonity\Scripts\SplatManager.cs" />
     <None Include="Assets\Photon Unity Networking\Demos\MarcoPolo-Tutorial\marcopolo-readme.txt" />
     <None Include="Assets\Photon Unity Networking\link.xml" />
+    <None Include="Assets\Splatoonity\Shaders\Resources\WorldTangentUnwrap.shader" />
+    <None Include="Assets\Splatoonity\Shaders\Resources\SplatBlit.shader" />
+    <None Include="Assets\Splatoonity\Shaders\Resources\WorldPosUnwrap.shader" />
     <None Include="Assets\Photon Unity Networking\Demos\DemoBoxes\Resources\eurof_tt.txt" />
+    <None Include="Assets\Splatoonity\Shaders\Resources\WorldBinormalUnwrap.shader" />
     <None Include="Assets\Photon Unity Networking\Demos\Shared Assets\Skin\3dText.shader" />
     <None Include="Assets\Photon Unity Networking\readme.txt" />
     <None Include="Assets\Photon Unity Networking\Demos\DemoRockPaperScissors\Assets\OpenSans\Apache License.txt" />
     <None Include="Assets\Photon Unity Networking\changelog.txt" />
+    <None Include="Assets\Splatoonity\Shaders\SplatShader.shader" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>H:/Data/GitHub/SilenceInTheSnow/SilenceInTheSnow/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
