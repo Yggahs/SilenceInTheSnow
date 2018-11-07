@@ -13,8 +13,7 @@ public class Player : Photon.MonoBehaviour {
     private Quaternion syncStartPositionR = Quaternion.Euler(Vector3.zero);
     private Quaternion syncEndPositionR = Quaternion.Euler(Vector3.zero);
 
-    private Vector3 syncStartPositionBullet = Vector3.zero;
-    private Vector3 syncEndPositionBullet = Vector3.zero;
+    
     //relative movement
     public Transform cam;
     public Transform camPivot;
@@ -33,22 +32,24 @@ public class Player : Photon.MonoBehaviour {
             stream.SendNext(GetComponent<Rigidbody>().position);
             stream.SendNext(GetComponent<Rigidbody>().velocity);
             stream.SendNext(GetComponent<Rigidbody>().rotation); //added for rotation
+           
         }
         else
         {
             Vector3 syncPosition = (Vector3)stream.ReceiveNext();
             Vector3 syncVelocity = (Vector3)stream.ReceiveNext();
             Quaternion syncRotation = (Quaternion)stream.ReceiveNext(); //sync object's rotation
-            
+
             syncTime = 0f;
             syncDelay = Time.time - lastSynchronizationTime;
             lastSynchronizationTime = Time.time;
             syncEndPosition = syncPosition + syncVelocity * syncDelay;
-            syncEndPositionBullet = syncPosition + syncVelocity * syncDelay;
+
             syncEndPositionR = syncRotation * Quaternion.Euler(syncVelocity * syncDelay); //object start position for rotation
             syncStartPosition = GetComponent<Rigidbody>().position;
             syncStartPositionR = GetComponent<Rigidbody>().rotation; //object start position for rotation
-            syncStartPositionBullet = GetComponent<Rigidbody>().position;
+           
+
         }
 	}
 
@@ -56,8 +57,7 @@ public class Player : Photon.MonoBehaviour {
     {
         cam = GetComponent<Transform>();
         camPivot = GetComponent<Transform>();
-        lastSynchronizationTime = Time.time;  
-        
+        lastSynchronizationTime = Time.time;    
     }
 
     private void Start()
@@ -122,7 +122,6 @@ public class Player : Photon.MonoBehaviour {
         syncTime += Time.deltaTime;
         GetComponent<Rigidbody>().position = Vector3.Lerp(syncStartPosition, syncEndPosition, syncTime / syncDelay);
         GetComponent<Rigidbody>().rotation = Quaternion.Lerp(syncStartPositionR, syncEndPositionR, syncTime / syncDelay); //apply synced rotation
-
     }
 
     void InputColorChange()
@@ -133,9 +132,16 @@ public class Player : Photon.MonoBehaviour {
         }
     }
 
+    [PunRPC]
+    void ChangeColorTo(Vector3 color)
+    {
+        GetComponent<Renderer>().material.color = new Color(color.x, color.y, color.z, 1f);
+        if (photonView.isMine)
+            photonView.RPC("ChangeColorTo", PhotonTargets.OthersBuffered, color);
+    }
+
     void Fire()
     {
-
         var bullet = (GameObject)Instantiate
             (
             bulletPrefab,
@@ -143,15 +149,7 @@ public class Player : Photon.MonoBehaviour {
             bulletSpawn.rotation
             );
         bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 6;
-        bullet.GetComponent<Rigidbody>().position = Vector3.Lerp(syncStartPositionBullet, syncEndPositionBullet, syncTime / syncDelay);
         Destroy(bullet, 2.0f);
-    }
 
-    [PunRPC]
-    void ChangeColorTo(Vector3 color)
-    {
-        GetComponent<Renderer>().material.color = new Color(color.x, color.y, color.z, 1f);
-        if (photonView.isMine)
-            photonView.RPC("ChangeColorTo", PhotonTargets.OthersBuffered, color);
     }
 }
