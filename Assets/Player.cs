@@ -22,8 +22,9 @@ public class Player : Photon.MonoBehaviour {
     Vector2 input;
 
     //test blood
-    public GameObject bulletPrefab;
-    public Transform bulletSpawn;
+    //public GameObject bulletPrefab;
+    //public Transform bulletSpawn;
+    public GameObject droplets;
     // Use this for initialization
     void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
@@ -140,16 +141,13 @@ public class Player : Photon.MonoBehaviour {
             photonView.RPC("ChangeColorTo", PhotonTargets.OthersBuffered, color);
     }
 
+    
     void Fire()
     {
-        var bullet = (GameObject)Instantiate
-            (
-            bulletPrefab,
-            bulletSpawn.position,
-            bulletSpawn.rotation
-            );
-        bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 6;
-        Destroy(bullet, 2.0f);
+     
+        PhotonNetwork.Instantiate(droplets.name, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity, 0);
+        
+        
 
     }
 }

@@ -220,7 +220,7 @@ GameObject:
   - component: {fileID: 1027837287}
   - component: {fileID: 1027837288}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: NetManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -251,6 +251,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1370421509982204, guid: f742a3289be161f47b2eb7b5a57e9501, type: 2}
+  droplets: {fileID: 1297777264866016, guid: 046eaaf7db833e845ad5f0a2bded3334, type: 2}
 --- !u!1 &1533701165
 GameObject:
   m_ObjectHideFlags: 0

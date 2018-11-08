@@ -9,6 +9,7 @@ public class NetworkManager : MonoBehaviour
     private TypedLobby lobbyName = new TypedLobby("Canvas_of_white", LobbyType.Default);
     private RoomInfo[] roomsList;
     public GameObject player;
+    public GameObject droplets;
     // Use this for initialization
     void Start()
     {
@@ -55,6 +56,7 @@ public class NetworkManager : MonoBehaviour
     {
         Debug.Log("Connected to Room");
         PhotonNetwork.Instantiate(player.name, Vector3.up * 5, Quaternion.identity, 0);
+        
     }
 }
 

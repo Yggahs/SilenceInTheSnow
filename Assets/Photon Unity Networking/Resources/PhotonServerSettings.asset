@@ -44,4 +44,6 @@ MonoBehaviour:
   - TaggedPlayer
   - ChangeColorTo
   - CreateSplat
+  - ChangePosition
+  - Fire
   DisableAutoOpenWizard: 1

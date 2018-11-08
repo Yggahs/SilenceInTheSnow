@@ -227,6 +227,7 @@ MonoBehaviour:
   ownershipTransfer: 0
   ObservedComponents:
   - {fileID: 114872580034047470}
+  - {fileID: 4188187464734000, guid: 046eaaf7db833e845ad5f0a2bded3334, type: 2}
   ObservedComponentsFoldoutOpen: 1
   viewIdField: 0
   instantiationId: -1
@@ -246,6 +247,4 @@ MonoBehaviour:
   speed: 0.3
   cam: {fileID: 0}
   camPivot: {fileID: 0}
-  bulletPrefab: {fileID: 1297777264866016, guid: 046eaaf7db833e845ad5f0a2bded3334,
-    type: 2}
-  bulletSpawn: {fileID: 4859411927900010}
+  droplets: {fileID: 1297777264866016, guid: 046eaaf7db833e845ad5f0a2bded3334, type: 2}
