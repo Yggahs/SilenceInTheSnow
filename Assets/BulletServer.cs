@@ -7,7 +7,10 @@ public class BulletServer : Photon.MonoBehaviour
 
     private void Awake()
     {
-        GetComponent<Rigidbody>().velocity = transform.forward * 6;
+        if (photonView.isMine)
+        {
+            GetComponent<Rigidbody>().velocity = GameObject.Find("PlayerX(Clone)").transform.forward * 6;
+        }
     }
 
     [PunRPC]

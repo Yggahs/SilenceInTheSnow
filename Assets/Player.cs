@@ -69,7 +69,7 @@ public class Player : Photon.MonoBehaviour {
             Camera.main.transform.position = this.transform.position - this.transform.forward * 10 + this.transform.up * 3;
             Camera.main.transform.LookAt(this.transform.position);
             Camera.main.transform.parent = this.transform;
-            
+         
         }
     }
 
@@ -144,10 +144,6 @@ public class Player : Photon.MonoBehaviour {
     
     void Fire()
     {
-     
         PhotonNetwork.Instantiate(droplets.name, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity, 0);
-        
-        
-
     }
 }
