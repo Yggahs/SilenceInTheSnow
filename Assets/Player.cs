@@ -87,8 +87,6 @@ public class Player : Photon.MonoBehaviour {
         {
             SyncedMovement();
         }
-
-        
     }
 
     void InputMovement() //camera relative movement
@@ -107,15 +105,12 @@ public class Player : Photon.MonoBehaviour {
         camF = camF.normalized;
         camR = camR.normalized;
 
-
         transform.position += ((camF * input.y + camR * input.x)*speed); //speed of player is determined by number that multiplies the first equation
 
         if (Input.GetKeyDown(KeyCode.Space))
             GetComponent<Rigidbody>().MovePosition(GetComponent<Rigidbody>().position + Vector3.up * 2);
         if (Input.GetKeyDown(KeyCode.E))
             Fire();
-
-
     }
 
     private void SyncedMovement()
