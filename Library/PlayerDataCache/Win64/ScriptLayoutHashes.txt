@@ -261,7 +261,7 @@ cfec3e0ab4cb682dcc806738d7ffdd46 Assembly-CSharp.dll:.ManualPhotonViewAllocator
 e04611b8715e6833d2bd7010fc6be10b Unity.TextMeshPro.dll:TMPro.TMP_StyleSheet
 035fe3e4be78edd2715b85da602fd058 Assembly-CSharp.dll:.JumpAndRunMovement
 45408ba338308c31fb2453abc6b827e1 Assembly-CSharp.dll:.DemoMecanimGUI
-27d3c9a74b52d49c2e7eef3362b0f528 Assembly-CSharp.dll:.Menu
+3cbf03eafb3fe7c57e3a0a1e42c2c276 Assembly-CSharp.dll:.Menu
 39b54f86b5b07a0183854b3c16fcdaa4 Assembly-CSharp.dll:.MoveByKeys
 486cd95c82d8305219c352c06b776e1f Assembly-CSharp.dll:.QuitOnEscapeOrBack
 486cd95c82d8305219c352c06b776e1f Assembly-CSharp.dll:ExitGames.Demos.DemoAnimator.PlayerNameInputField

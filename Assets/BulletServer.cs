@@ -11,6 +11,8 @@ public class BulletServer : Photon.MonoBehaviour
         {
             GetComponent<Rigidbody>().velocity = GameObject.Find("PlayerX(Clone)").transform.forward * 6;
         }
+
+        Destroy(gameObject, 3f);
     }
 
     [PunRPC]

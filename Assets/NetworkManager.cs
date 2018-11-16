@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class NetworkManager : MonoBehaviour
+public class NetworkManager : Photon.MonoBehaviour
 {
     private const string roomName = "RoomName";
     private TypedLobby lobbyName = new TypedLobby("Canvas_of_white", LobbyType.Default);
     private RoomInfo[] roomsList;
     public GameObject player;
     public GameObject droplets;
+    
     // Use this for initialization
     void Start()
     {
@@ -48,8 +49,10 @@ public class NetworkManager : MonoBehaviour
         Debug.Log("Room was created");
         roomsList = PhotonNetwork.GetRoomList();
     }
+    
     void OnJoinedLobby()
     {
+        
         Debug.Log("Joined Lobby");
     }
     void OnJoinedRoom()

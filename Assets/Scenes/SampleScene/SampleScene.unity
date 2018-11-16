@@ -327,6 +327,7 @@ GameObject:
   - component: {fileID: 1533701166}
   - component: {fileID: 1533701170}
   - component: {fileID: 1533701171}
+  - component: {fileID: 1533701172}
   m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
@@ -442,6 +443,32 @@ MonoBehaviour:
   RT256: {fileID: 0}
   RT4: {fileID: 0}
   Tex4: {fileID: 0}
+--- !u!114 &1533701172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1533701165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ownerId: 0
+  group: 0
+  OwnerShipWasTransfered: 0
+  prefixBackup: -1
+  synchronization: 3
+  onSerializeTransformOption: 3
+  onSerializeRigidBodyOption: 2
+  ownershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 1533701170}
+  ObservedComponentsFoldoutOpen: 1
+  viewIdField: 2
+  instantiationId: 2
+  currentMasterID: -1
+  isRuntimeInstantiated: 0
 --- !u!1 &1952488008
 GameObject:
   m_ObjectHideFlags: 0
@@ -539,8 +566,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cadd15edf24c3044d9d7b5e2529465a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  menu: {fileID: 10904, guid: 0000000000000000f000000000000000, type: 0}
-  sliderYellow: {fileID: 0}
   sliderRed: {fileID: 2800000, guid: 644bd79b26a8bbb42ab8f2f8cc51431f, type: 3}
-  sliderGreen: {fileID: 0}
-  sliderBlue: {fileID: 0}
+  sliderBlue: {fileID: 2800000, guid: 1d90c1f3f3faddb43acbdb3e91884d04, type: 3}
