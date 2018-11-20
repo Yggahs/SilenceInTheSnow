@@ -12,7 +12,7 @@ public class Player : Photon.MonoBehaviour {
 
     private Quaternion syncStartPositionR = Quaternion.Euler(Vector3.zero);
     private Quaternion syncEndPositionR = Quaternion.Euler(Vector3.zero);
-
+ 
     
     //relative movement
     public Transform cam;
@@ -21,10 +21,8 @@ public class Player : Photon.MonoBehaviour {
 
     Vector2 input;
 
-    //test blood
-    //public GameObject bulletPrefab;
-    //public Transform bulletSpawn;
     public GameObject droplets;
+    public int playerID;
     // Use this for initialization
     void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
@@ -56,16 +54,20 @@ public class Player : Photon.MonoBehaviour {
 
     void Awake()
     {
+        
+        playerID = PhotonNetwork.player.ID;
         cam = GetComponent<Transform>();
         camPivot = GetComponent<Transform>();
-        lastSynchronizationTime = Time.time;    
+        lastSynchronizationTime = Time.time;
+        
     }
 
     private void Start()
     {
-
+        
         if (photonView.isMine)
         {
+            
             Camera.main.transform.position = this.transform.position - this.transform.forward * 10 + this.transform.up * 3;
             Camera.main.transform.LookAt(this.transform.position);
             Camera.main.transform.parent = this.transform;
@@ -76,6 +78,7 @@ public class Player : Photon.MonoBehaviour {
     // Update is called once per frame
     void Update ()
     {
+        
         if (photonView.isMine)
         {
             
@@ -139,6 +142,7 @@ public class Player : Photon.MonoBehaviour {
     
     void Fire()
     {
-        PhotonNetwork.Instantiate(droplets.name, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity, 0);
+        PhotonNetwork.Instantiate(droplets.name, gameObject.transform.position, Quaternion.identity, 0); // use pun rpc 
+        //droplets.transform.parent = gameObject.transform;
     }
 }

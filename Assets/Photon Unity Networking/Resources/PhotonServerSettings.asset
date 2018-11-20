@@ -46,4 +46,5 @@ MonoBehaviour:
   - CreateSplat
   - ChangePosition
   - Fire
+  - OnGUI
   DisableAutoOpenWizard: 1

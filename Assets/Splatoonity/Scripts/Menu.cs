@@ -18,28 +18,30 @@ public class Menu : Photon.MonoBehaviour {
 	//void Update () {
 	
 	//}
-
+    [PunRPC]
 	void OnGUI () {
         Vector4 scores = SplatManagerSystem.instance.scores + new Vector4(0.1f, 0.1f, 0.1f, 0.1f);
         int redScore = (int)(512 * (scores.y /*/ totalScores*/ ));
         int blueScore = (int)(512 * (scores.w /*/ totalScores)*/));
-        
-            //GUI.DrawTexture (new Rect (20, 20, menu.width, menu.height), menu);
+        //int yellowScore = (int)( 512 * ( scores.x /*/ totalScores )*/ ));
+        //int greenScore = (int)( 512 * ( scores.z /*/ totalScores )*/ ));
+        //GUI.DrawTexture (new Rect (20, 20, menu.width, menu.height), menu);
 
-            
-            //float totalScores = scores.x + scores.y + scores.z + scores.w;
-            //int yelowScore = (int)( 512 * ( scores.x / totalScores ) );
-            
-            //int greenScore = (int)( 512 * ( scores.z / totalScores ) );
-            
 
-            //GUI.DrawTexture (new Rect (20 + menu.width + 20, 20, yelowScore, 30), sliderYellow);
+        //float totalScores = scores.x + scores.y + scores.z + scores.w;
+
+
+
+        //GUI.DrawTexture (new Rect (20 + menu.width + 20, 20, yelowScore, 30), sliderYellow);
             GUI.DrawTexture(new Rect(0, 20, redScore, 30), sliderRed);
-            //GUI.DrawTexture (new Rect (20 + menu.width + 20, 100, greenScore, 30), sliderGreen);
-            //GUI.DrawTexture (new Rect (20 + menu.width + 20, 140, blueScore, 30), sliderBlue);
-        
-        
             GUI.DrawTexture(new Rect(0, 60, blueScore, 30), sliderBlue);
-        }
+            //GUI.DrawTexture(new Rect(0, 100, blueScore, 30), sliderGreen);
+            //GUI.DrawTexture(new Rect(0, 140, blueScore, 30), sliderYellow);
+        //GUI.DrawTexture (new Rect (20 + menu.width + 20, 100, greenScore, 30), sliderGreen);
+        //GUI.DrawTexture (new Rect (20 + menu.width + 20, 140, blueScore, 30), sliderBlue);
+
+
+
+    }
 	}
 
