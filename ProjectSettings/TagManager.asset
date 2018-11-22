@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - blood
+  - ErrorRegistration
+  - emailError
   layers:
   - Default
   - TransparentFX

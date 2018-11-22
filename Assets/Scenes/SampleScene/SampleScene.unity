@@ -179,6 +179,106 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1001 &545115802
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 224815654923349278, guid: 112d40f13963a5849accb781fe83acc2,
+        type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224815654923349278, guid: 112d40f13963a5849accb781fe83acc2,
+        type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224815654923349278, guid: 112d40f13963a5849accb781fe83acc2,
+        type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224815654923349278, guid: 112d40f13963a5849accb781fe83acc2,
+        type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224815654923349278, guid: 112d40f13963a5849accb781fe83acc2,
+        type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224815654923349278, guid: 112d40f13963a5849accb781fe83acc2,
+        type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224815654923349278, guid: 112d40f13963a5849accb781fe83acc2,
+        type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224815654923349278, guid: 112d40f13963a5849accb781fe83acc2,
+        type: 2}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224815654923349278, guid: 112d40f13963a5849accb781fe83acc2,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224815654923349278, guid: 112d40f13963a5849accb781fe83acc2,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224815654923349278, guid: 112d40f13963a5849accb781fe83acc2,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224815654923349278, guid: 112d40f13963a5849accb781fe83acc2,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224815654923349278, guid: 112d40f13963a5849accb781fe83acc2,
+        type: 2}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224815654923349278, guid: 112d40f13963a5849accb781fe83acc2,
+        type: 2}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224815654923349278, guid: 112d40f13963a5849accb781fe83acc2,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224815654923349278, guid: 112d40f13963a5849accb781fe83acc2,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224815654923349278, guid: 112d40f13963a5849accb781fe83acc2,
+        type: 2}
+      propertyPath: m_Pivot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224815654923349278, guid: 112d40f13963a5849accb781fe83acc2,
+        type: 2}
+      propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 112d40f13963a5849accb781fe83acc2, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1 &588263847
 GameObject:
   m_ObjectHideFlags: 0
@@ -464,9 +564,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cadd15edf24c3044d9d7b5e2529465a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sliderYellow: {fileID: 2800000, guid: a5241090253e6f4469c82be4ad6bd594, type: 3}
   sliderRed: {fileID: 2800000, guid: 644bd79b26a8bbb42ab8f2f8cc51431f, type: 3}
-  sliderGreen: {fileID: 2800000, guid: 78fb460b5404e6640b73768262338894, type: 3}
   sliderBlue: {fileID: 2800000, guid: 1d90c1f3f3faddb43acbdb3e91884d04, type: 3}
 --- !u!114 &1952488013
 MonoBehaviour:

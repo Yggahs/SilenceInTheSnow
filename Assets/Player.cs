@@ -20,12 +20,14 @@ public class Player : Photon.MonoBehaviour {
     float heading = 0;
 
     Vector2 input;
+    
 
     public GameObject droplets;
     public int playerID;
     // Use this for initialization
     void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
+ 
         if (stream.isWriting)
         {
             stream.SendNext(GetComponent<Rigidbody>().position);
