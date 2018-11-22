@@ -16,7 +16,6 @@ public class BulletServer : Photon.MonoBehaviour
 
     private void Awake()
     {
-
         Plane = GameObject.Find("Plane");
         Player = GameObject.Find("PlayerX(Clone)");
         playerID = Player.GetComponent<Player>().playerID;
