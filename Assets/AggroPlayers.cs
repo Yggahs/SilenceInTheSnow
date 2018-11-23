@@ -7,6 +7,7 @@ public class AggroPlayers : MonoBehaviour {
 
     int splatsX = 1;
     int splatsY = 1;
+    bool dead = false;
 
     public float splatScale = 1.0f;
     Transform target; //the enemy's target
@@ -23,8 +24,13 @@ public class AggroPlayers : MonoBehaviour {
     void Update()
     {
         target = GameObject.FindWithTag("Player").transform;
-        transform.LookAt(target);
-        transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
+        
+        if (dead == false)
+        {
+            transform.LookAt(target);
+            transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
+        }
+        
         if (Input.GetKeyDown(KeyCode.Z))
         {
             Death();
@@ -38,8 +44,10 @@ public class AggroPlayers : MonoBehaviour {
 
     void Death()
     {
+        dead = true;
         CreateSplat();
         Destroy(gameObject, 1);
+
     }
 
     Vector4 ChooseChannelmask()
