@@ -1,6 +1,6 @@
 WindowsStandalone
 PlayerPath?
-H:/Data/GitHub/SilenceInTheSnow/multiplayer test 2.exe
+H:/Desktop/Multiplayer test builds/multiplayer test 2.exe
 SceneListBegin?
 Assets/Scenes/SampleScene/SampleScene.unity
 SceneListEnd?

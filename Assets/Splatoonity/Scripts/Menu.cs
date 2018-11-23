@@ -9,15 +9,13 @@ public class Menu : Photon.MonoBehaviour {
 	//public Texture2D sliderGreen;
 	public Texture2D sliderBlue;
 
-	// Use this for initialization
-	//void Start () {
-	
-	//}
-	
-	// Update is called once per frame
-	//void Update () {
-	
-	//}
+    // Use this for initialization
+    //void Start () {
+
+    //}
+
+    // Update is called once per frame
+    
     [PunRPC]
 	void OnGUI () {
         Vector4 scores = SplatManagerSystem.instance.scores + new Vector4(0.1f, 0.1f, 0.1f, 0.1f);

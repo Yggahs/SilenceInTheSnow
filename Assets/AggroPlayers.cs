@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AggroPlayers : MonoBehaviour {
+public class AggroPlayers : Photon.MonoBehaviour {
     Vector4 channelMask = new Vector4(1, 0, 0, 0);
 
     int splatsX = 1;
@@ -109,5 +109,15 @@ public class AggroPlayers : MonoBehaviour {
 
             GameObject.Destroy(newSplatObject);
         }
+    }
+
+    [PunRPC]
+    void ChangePosition(Vector3 myposition)
+    {
+        GetComponent<Transform>().position = myposition;
+        //if (photonView.isMine)
+        //{
+            photonView.RPC("ChangePostionTo", PhotonTargets.OthersBuffered, myposition);
+        //}
     }
 }
