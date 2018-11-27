@@ -113,9 +113,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3ab421f89756f246b59797753385ad9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  splatScale: 5
+  splatScale: 1
   Plane: {fileID: 1287871376911092, guid: 2f6bcbc2eda033d4cada0312cfb3920e, type: 2}
   Player: {fileID: 1370421509982204, guid: f742a3289be161f47b2eb7b5a57e9501, type: 2}
+  playerID: 1
 --- !u!114 &114449916547002216
 MonoBehaviour:
   m_ObjectHideFlags: 1

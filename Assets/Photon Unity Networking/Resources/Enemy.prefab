@@ -139,7 +139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 981a9509a1e200d4db2c47056b2d6df4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  splatScale: 1
+  splatScale: 5
 --- !u!136 &136545977772154498
 CapsuleCollider:
   m_ObjectHideFlags: 1

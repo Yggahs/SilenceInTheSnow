@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\AggroPlayers.cs" />
+    <Compile Include="Assets\attackAnimation.cs" />
     <Compile Include="Assets\BulletServer.cs" />
     <Compile Include="Assets\NetworkManager.cs" />
     <Compile Include="Assets\Photon Unity Networking\Demos\Demo2DJumpAndRunWithPhysics\Scripts\Demo2DJumpAndRun.cs" />

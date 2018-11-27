@@ -46,6 +46,7 @@ public class AggroPlayers : Photon.MonoBehaviour {
     {
         dead = true;
         CreateSplat();
+        FindObjectOfType<SpawnEnemies>().enemycount--;
         Destroy(gameObject, 1);
 
     }

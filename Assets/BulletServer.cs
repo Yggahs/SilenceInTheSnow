@@ -12,13 +12,13 @@ public class BulletServer : Photon.MonoBehaviour
     public float splatScale = 1.0f;
     public GameObject Plane = null;
     public GameObject Player = null;
-    int playerID;
+    public int playerID;
 
     private void Awake()
     {
         Plane = GameObject.Find("Plane");
-        Player = GameObject.Find("PlayerX(Clone)");
-        playerID = Player.GetComponent<Player>().playerID;
+        //Player = GameObject.Find("PlayerX(Clone)");
+        //playerID = Player.GetComponent<Player>().playerID;
 
         if (photonView.isMine)
         {
@@ -31,6 +31,7 @@ public class BulletServer : Photon.MonoBehaviour
         if (other.gameObject == Plane)
         {
             CreateSplat(other);
+            Debug.Log(playerID);
             Destroy(gameObject);
         }
     }
@@ -51,9 +52,9 @@ public class BulletServer : Photon.MonoBehaviour
             case 1:
                 channelMask = new Vector4(0, 1, 0, 0);
                 break;
-            default:
-                channelMask = new Vector4(1, 1, 1, 1);
-                break;
+            //default:
+            //    channelMask = new Vector4(1, 1, 1, 1);
+            //    break;
         }
         return channelMask;
     }

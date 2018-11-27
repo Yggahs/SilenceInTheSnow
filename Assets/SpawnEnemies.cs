@@ -7,6 +7,7 @@ public class SpawnEnemies : Photon.MonoBehaviour {
     public bool stopSpawning = false;
     public float spawnTime;
     public float spawnDelay;
+    public int enemycount = 0;
     [PunRPC]
     void Awake()
     {
@@ -16,6 +17,11 @@ public class SpawnEnemies : Photon.MonoBehaviour {
     void SpawnEnemy()
     {
         PhotonNetwork.Instantiate(spawnedEnemy.name, gameObject.transform.position, Quaternion.identity, 0);
+        enemycount++;
+        if (enemycount >= 10)
+        {
+            stopSpawning = true;
+        }
         if (stopSpawning)
         {
             CancelInvoke("SpawnEnemy");

@@ -7,6 +7,7 @@ public class Player : Photon.MonoBehaviour {
     private float lastSynchronizationTime = 0f;
     private float syncDelay = 0f;
     private float syncTime = 0f;
+    public attackAnimation _attackAnimation;
     private Vector3 syncStartPosition = Vector3.zero;
     private Vector3 syncEndPosition = Vector3.zero;
 
@@ -113,7 +114,10 @@ public class Player : Photon.MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Space))
             GetComponent<Rigidbody>().MovePosition(GetComponent<Rigidbody>().position + Vector3.up * 2);
         if (Input.GetKeyDown(KeyCode.E))
+        {
+            _attackAnimation.attack();
             Fire();
+        }
     }
 
     private void SyncedMovement()
@@ -143,6 +147,6 @@ public class Player : Photon.MonoBehaviour {
     void Fire()
     {
         PhotonNetwork.Instantiate(droplets.name, gameObject.transform.position, Quaternion.identity, 0); // use pun rpc 
-        //droplets.transform.parent = gameObject.transform;
+        droplets.GetComponent<BulletServer>().playerID = PhotonNetwork.player.ID;
     }
 }
