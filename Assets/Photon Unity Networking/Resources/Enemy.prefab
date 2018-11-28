@@ -140,6 +140,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   splatScale: 5
+  droplets: {fileID: 1297777264866016, guid: 046eaaf7db833e845ad5f0a2bded3334, type: 2}
 --- !u!136 &136545977772154498
 CapsuleCollider:
   m_ObjectHideFlags: 1

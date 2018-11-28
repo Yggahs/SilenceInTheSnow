@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletServer : Photon.MonoBehaviour
+public class BulletServer : Photon.MonoBehaviour, IPunObservable
 {
     Vector4 channelMask = new Vector4(1, 0, 0, 0);
 
@@ -12,7 +12,7 @@ public class BulletServer : Photon.MonoBehaviour
     public float splatScale = 1.0f;
     public GameObject Plane = null;
     public GameObject Player = null;
-    public int playerID;
+    [SerializeField] public int playerID;
 
     private void Awake()
     {
@@ -22,7 +22,7 @@ public class BulletServer : Photon.MonoBehaviour
 
         if (photonView.isMine)
         {
-            GetComponent<Rigidbody>().velocity = GameObject.Find("PlayerX(Clone)").transform.forward * 6;
+            GetComponent<Rigidbody>().velocity = GameObject.Find("Enemy(Clone)").transform.forward * -5;
         }
     }
 
@@ -104,4 +104,18 @@ public class BulletServer : Photon.MonoBehaviour
         }
     }
 
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        
+        if (stream.isWriting)
+        {
+            // We own this player: send the others our data
+            stream.SendNext(playerID);
+        }
+        else
+        {
+            // Network player, receive data
+            this.playerID = (int)stream.ReceiveNext();
+        }
+    }
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AggroPlayers : Photon.MonoBehaviour {
+public class AggroPlayers : Photon.MonoBehaviour, IPunObservable {
     Vector4 channelMask = new Vector4(1, 0, 0, 0);
 
     int splatsX = 1;
@@ -13,7 +13,7 @@ public class AggroPlayers : Photon.MonoBehaviour {
     Transform target; //the enemy's target
     int moveSpeed = 3; //move speed
     int playerID = 1;
-
+    public GameObject droplets;
 
     void Awake()
     {
@@ -38,7 +38,7 @@ public class AggroPlayers : Photon.MonoBehaviour {
         
         if (collision.gameObject.tag == "sword")
         {
-            //playerID = collision.gameObject.GetComponent<Player>().playerID;
+            playerID = collision.gameObject.transform.parent.gameObject.GetComponent<Player>().playerID;
             Death();
         }
     }
@@ -46,6 +46,7 @@ public class AggroPlayers : Photon.MonoBehaviour {
     void Death()
     {
         dead = true;
+        Bleed();
         CreateSplat();
         FindObjectOfType<SpawnEnemies>().enemycount--;
         Destroy(gameObject, 1);
@@ -68,9 +69,9 @@ public class AggroPlayers : Photon.MonoBehaviour {
             case 1:
                 channelMask = new Vector4(0, 1, 0, 0);
                 break;
-            default:
-                channelMask = new Vector4(1, 1, 1, 1);
-                break;
+            //default:
+            //    channelMask = new Vector4(1, 1, 1, 1);
+            //    break;
         }
         return channelMask;
     }
@@ -121,5 +122,25 @@ public class AggroPlayers : Photon.MonoBehaviour {
         //{
             photonView.RPC("ChangePostionTo", PhotonTargets.OthersBuffered, myposition);
         //}
+    }
+
+    void Bleed()
+    {
+        GameObject droplet = PhotonNetwork.Instantiate(droplets.name, gameObject.transform.position, Quaternion.identity, 0) as GameObject;
+        droplet.GetComponent<BulletServer>().playerID = PhotonNetwork.player.ID;
+    }
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.isWriting)
+        {
+            // We own this player: send the others our data
+            stream.SendNext(playerID);
+        }
+        else
+        {
+            // Network player, receive data
+            this.playerID = (int)stream.ReceiveNext();
+        }
     }
 }

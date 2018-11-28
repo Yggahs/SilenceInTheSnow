@@ -116,7 +116,7 @@ public class Player : Photon.MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.E))
         {
             _attackAnimation.attack();
-            Fire();
+            //Fire();
         }
     }
 
@@ -144,10 +144,10 @@ public class Player : Photon.MonoBehaviour {
     }
 
     
-    void Fire()
-    {
-        GameObject droplet =  PhotonNetwork.Instantiate(droplets.name, gameObject.transform.position, Quaternion.identity,0) as GameObject; // use pun rpc 
-        droplet.GetComponent<BulletServer>().playerID = PhotonNetwork.player.ID;
+    //void Fire()
+    //{
+    //    GameObject droplet =  PhotonNetwork.Instantiate(droplets.name, gameObject.transform.position, Quaternion.identity,0) as GameObject;
+    //    droplet.GetComponent<BulletServer>().playerID = PhotonNetwork.player.ID;
        
-    }
+    //}
 }
