@@ -31,7 +31,7 @@ public class BulletServer : Photon.MonoBehaviour
         if (other.gameObject == Plane)
         {
             CreateSplat(other);
-            Debug.Log(playerID);
+            Debug.Log("player id is "+playerID);
             Destroy(gameObject);
         }
     }

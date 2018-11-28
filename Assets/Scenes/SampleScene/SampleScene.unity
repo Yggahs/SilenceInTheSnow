@@ -145,6 +145,7 @@ MonoBehaviour:
   stopSpawning: 0
   spawnTime: 5
   spawnDelay: 2.5
+  enemycount: 0
 --- !u!4 &96137049
 Transform:
   m_ObjectHideFlags: 0

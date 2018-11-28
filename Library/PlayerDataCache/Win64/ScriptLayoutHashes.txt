@@ -174,6 +174,7 @@ ee67b643d4de82f8daa5a72cba8e58c4 Assembly-CSharp.dll:.MessageOverlay
 10338f88a202ad339cf5a46d9694cd61 Assembly-CSharp.dll:.Player
 ad24f3e8618f76dd8b79fb5e27fca67e Assembly-CSharp.dll:.ColorPerPlayer
 486cd95c82d8305219c352c06b776e1f Assembly-CSharp.dll:.NetworkCharacter
+486cd95c82d8305219c352c06b776e1f Assembly-CSharp.dll:.attackAnimation
 1679f4e1b7d2c828e6b9a9992964ef3c Assembly-CSharp.dll:.PickupDemoGui
 43469f1acb6d615ccbab429886a4d0f9 Assembly-CSharp.dll:.ChannelSelector
 37d183a23d00f249508c55d8dd96a0cc Assembly-CSharp.dll:.PhotonRigidbodyView
@@ -280,4 +281,3 @@ ac4015b3f9c2f9a8f87357544349e470 Assembly-CSharp.dll:.InRoomChat
 115ac72ea90f17c32ce5df7782e2a4a4 Assembly-CSharp.dll:.BulletServer
 486cd95c82d8305219c352c06b776e1f Assembly-CSharp.dll:.ClickDetector
 33c9cb909c4e84224905299a893011eb Assembly-CSharp.dll:.CubeExtra
-486cd95c82d8305219c352c06b776e1f Assembly-CSharp.dll:.attackAnimation

@@ -45,9 +45,10 @@ GameObject:
   - component: {fileID: 95338822764556798}
   - component: {fileID: 111582852271285730}
   - component: {fileID: 114175551230574330}
+  - component: {fileID: 136876591491559816}
   m_Layer: 0
   m_Name: Rune Sword
-  m_TagString: Untagged
+  m_TagString: sword
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -278,3 +279,16 @@ MonoBehaviour:
   instantiationId: -1
   currentMasterID: -1
   isRuntimeInstantiated: 0
+--- !u!136 &136876591491559816
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1977323467709638}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.14260748
+  m_Height: 0.81824714
+  m_Direction: 1
+  m_Center: {x: 0.000026494028, y: 0.13316546, z: 0.071372025}

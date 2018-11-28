@@ -30,16 +30,17 @@ public class AggroPlayers : Photon.MonoBehaviour {
             transform.LookAt(target);
             transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
         }
-        
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            Death();
-        }
+       
     }
 
-    void OnCollisionEnter(Collision collision)
+    void OnTriggerEnter(Collider collision)
     {
-        //die
+        
+        if (collision.gameObject.tag == "sword")
+        {
+            //playerID = collision.gameObject.GetComponent<Player>().playerID;
+            Death();
+        }
     }
 
     void Death()

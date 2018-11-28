@@ -146,7 +146,8 @@ public class Player : Photon.MonoBehaviour {
     
     void Fire()
     {
-        PhotonNetwork.Instantiate(droplets.name, gameObject.transform.position, Quaternion.identity, 0); // use pun rpc 
-        droplets.GetComponent<BulletServer>().playerID = PhotonNetwork.player.ID;
+        GameObject droplet =  PhotonNetwork.Instantiate(droplets.name, gameObject.transform.position, Quaternion.identity,0) as GameObject; // use pun rpc 
+        droplet.GetComponent<BulletServer>().playerID = PhotonNetwork.player.ID;
+       
     }
 }
