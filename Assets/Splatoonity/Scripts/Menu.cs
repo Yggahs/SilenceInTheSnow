@@ -17,7 +17,9 @@ public class Menu : Photon.MonoBehaviour {
     // Update is called once per frame
     
     [PunRPC]
-	void OnGUI () {
+	void OnGUI ()
+    {
+        
         Vector4 scores = SplatManagerSystem.instance.scores + new Vector4(0.1f, 0.1f, 0.1f, 0.1f);
         int redScore = (int)(512 * (scores.y /*/ totalScores*/ ));
         int blueScore = (int)(512 * (scores.w /*/ totalScores)*/));
