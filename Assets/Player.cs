@@ -22,8 +22,10 @@ public class Player : Photon.MonoBehaviour {
 
     Vector2 input;
 
-    public GameObject droplets;
-    public int playerID;
+
+
+
+    [SerializeField] public int playerIDinPlayer = 0;
     // Use this for initialization
     void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
@@ -32,7 +34,7 @@ public class Player : Photon.MonoBehaviour {
             stream.SendNext(GetComponent<Rigidbody>().position);
             stream.SendNext(GetComponent<Rigidbody>().velocity);
             stream.SendNext(GetComponent<Rigidbody>().rotation); //added for rotation
-           
+            stream.SendNext(playerIDinPlayer);
         }
         else
         {
@@ -48,15 +50,15 @@ public class Player : Photon.MonoBehaviour {
             syncEndPositionR = syncRotation * Quaternion.Euler(syncVelocity * syncDelay); //object start position for rotation
             syncStartPosition = GetComponent<Rigidbody>().position;
             syncStartPositionR = GetComponent<Rigidbody>().rotation; //object start position for rotation
-           
 
+            this.playerIDinPlayer = (int)stream.ReceiveNext();
         }
 	}
 
     void Awake()
     {
         
-        playerID = PhotonNetwork.player.ID;
+        playerIDinPlayer = PhotonNetwork.player.ID;
         cam = GetComponent<Transform>();
         camPivot = GetComponent<Transform>();
         lastSynchronizationTime = Time.time;
@@ -143,11 +145,11 @@ public class Player : Photon.MonoBehaviour {
             photonView.RPC("ChangeColorTo", PhotonTargets.OthersBuffered, color);
     }
 
-    
+
     //void Fire()
     //{
     //    GameObject droplet =  PhotonNetwork.Instantiate(droplets.name, gameObject.transform.position, Quaternion.identity,0) as GameObject;
     //    droplet.GetComponent<BulletServer>().playerID = PhotonNetwork.player.ID;
-       
+
     //}
 }

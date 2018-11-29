@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 95338822764556798}
   - component: {fileID: 111582852271285730}
   - component: {fileID: 114175551230574330}
-  - component: {fileID: 136876591491559816}
+  - component: {fileID: 64877172358237466}
   m_Layer: 0
   m_Name: Rune Sword
   m_TagString: sword
@@ -179,6 +179,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!64 &64877172358237466
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1977323467709638}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: caac9f639cd2a2e48b1f5bb7c4ae6544, type: 3}
 --- !u!65 &65431227230348892
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -250,8 +264,7 @@ MonoBehaviour:
   _attackAnimation: {fileID: 114175551230574330}
   cam: {fileID: 0}
   camPivot: {fileID: 0}
-  droplets: {fileID: 1297777264866016, guid: 046eaaf7db833e845ad5f0a2bded3334, type: 2}
-  playerID: 0
+  playerIDinPlayer: 0
 --- !u!114 &114604757142968692
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -273,22 +286,8 @@ MonoBehaviour:
   ownershipTransfer: 0
   ObservedComponents:
   - {fileID: 114336950609377452}
-  - {fileID: 4188187464734000, guid: 046eaaf7db833e845ad5f0a2bded3334, type: 2}
   ObservedComponentsFoldoutOpen: 1
   viewIdField: 0
   instantiationId: -1
   currentMasterID: -1
   isRuntimeInstantiated: 0
---- !u!136 &136876591491559816
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1977323467709638}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 0.14260748
-  m_Height: 0.81824714
-  m_Direction: 1
-  m_Center: {x: 0.000026494028, y: 0.13316546, z: 0.071372025}

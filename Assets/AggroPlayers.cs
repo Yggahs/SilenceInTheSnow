@@ -12,7 +12,7 @@ public class AggroPlayers : Photon.MonoBehaviour, IPunObservable {
     public float splatScale = 1.0f;
     Transform target; //the enemy's target
     int moveSpeed = 3; //move speed
-    int playerID = 1;
+    [SerializeField] public int playerIDinEnemy;
     public GameObject droplets;
 
     void Awake()
@@ -38,13 +38,14 @@ public class AggroPlayers : Photon.MonoBehaviour, IPunObservable {
         
         if (collision.gameObject.tag == "sword")
         {
-            playerID = collision.gameObject.transform.parent.gameObject.GetComponent<Player>().playerID;
+            playerIDinEnemy = collision.gameObject.transform.parent.gameObject.GetComponent<Player>().playerIDinPlayer;
             Death();
         }
     }
 
     void Death()
     {
+        Debug.Log("Killed by player "+playerIDinEnemy);
         dead = true;
         Bleed();
         CreateSplat();
@@ -55,7 +56,7 @@ public class AggroPlayers : Photon.MonoBehaviour, IPunObservable {
 
     Vector4 ChooseChannelmask()
     {
-        switch (playerID)
+        switch (playerIDinEnemy)
         {
             case 4:
                 channelMask = new Vector4(1, 0, 0, 0);
@@ -127,7 +128,7 @@ public class AggroPlayers : Photon.MonoBehaviour, IPunObservable {
     void Bleed()
     {
         GameObject droplet = PhotonNetwork.Instantiate(droplets.name, gameObject.transform.position, Quaternion.identity, 0) as GameObject;
-        droplet.GetComponent<BulletServer>().playerID = PhotonNetwork.player.ID;
+        droplet.GetComponent<BulletServer>().playerIDinDroplet = playerIDinEnemy;
     }
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
@@ -135,12 +136,12 @@ public class AggroPlayers : Photon.MonoBehaviour, IPunObservable {
         if (stream.isWriting)
         {
             // We own this player: send the others our data
-            stream.SendNext(playerID);
+            stream.SendNext(playerIDinEnemy);
         }
         else
         {
             // Network player, receive data
-            this.playerID = (int)stream.ReceiveNext();
+            this.playerIDinEnemy = (int)stream.ReceiveNext();
         }
     }
 }
