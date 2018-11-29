@@ -127,9 +127,13 @@ public class AggroPlayers : Photon.MonoBehaviour, IPunObservable {
 
     void Bleed()
     {
-        GameObject droplet = PhotonNetwork.Instantiate(droplets.name, gameObject.transform.position, Quaternion.identity, 0) as GameObject;
-        droplet.GetComponent<BulletServer>().playerIDinDroplet = playerIDinEnemy;
+        if (photonView.isMine)
+        {
+            GameObject droplet = PhotonNetwork.Instantiate(droplets.name, gameObject.transform.position, Quaternion.identity, 0) as GameObject;
+            droplet.GetComponent<BulletServer>().playerIDinDroplet = playerIDinEnemy;
+        }
     }
+        
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
