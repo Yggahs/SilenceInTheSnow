@@ -45,7 +45,7 @@ public class AggroPlayers : Photon.MonoBehaviour, IPunObservable {
 
     void Death()
     {
-        Debug.Log("Killed by player "+playerIDinEnemy);
+        //Debug.Log("Killed by player "+playerIDinEnemy);
         dead = true;
         Bleed();
         CreateSplat();
@@ -119,10 +119,10 @@ public class AggroPlayers : Photon.MonoBehaviour, IPunObservable {
     void ChangePosition(Vector3 myposition)
     {
         GetComponent<Transform>().position = myposition;
-        //if (photonView.isMine)
-        //{
+        if (photonView.isMine)
+        {
             photonView.RPC("ChangePostionTo", PhotonTargets.OthersBuffered, myposition);
-        //}
+        }
     }
 
     void Bleed()
