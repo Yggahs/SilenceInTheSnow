@@ -15,6 +15,17 @@ public class AggroPlayers : Photon.MonoBehaviour, IPunObservable {
     [SerializeField] public int playerIDinEnemy;
     public GameObject droplets;
 
+    private float lastSynchronizationTime = 0f;
+    private float syncDelay = 0f;
+    private float syncTime = 0f;
+
+    private Vector3 syncStartPosition = Vector3.zero;
+    private Vector3 syncEndPosition = Vector3.zero;
+
+    private Quaternion syncStartPositionR = Quaternion.Euler(Vector3.zero);
+    private Quaternion syncEndPositionR = Quaternion.Euler(Vector3.zero);
+
+
     void Awake()
     {
         
@@ -70,9 +81,9 @@ public class AggroPlayers : Photon.MonoBehaviour, IPunObservable {
             case 1:
                 channelMask = new Vector4(0, 1, 0, 0);
                 break;
-            //default:
-            //    channelMask = new Vector4(1, 1, 1, 1);
-            //    break;
+            default:
+                channelMask = new Vector4(0, 0, 0, 0);
+                break;
         }
         return channelMask;
     }
@@ -139,11 +150,27 @@ public class AggroPlayers : Photon.MonoBehaviour, IPunObservable {
     {
         if (stream.isWriting)
         {
+            stream.SendNext(GetComponent<Rigidbody>().position);
+            stream.SendNext(GetComponent<Rigidbody>().velocity);
+            stream.SendNext(GetComponent<Rigidbody>().rotation); //added for rotation
             // We own this player: send the others our data
             stream.SendNext(playerIDinEnemy);
         }
         else
         {
+            Vector3 syncPosition = (Vector3)stream.ReceiveNext();
+            Vector3 syncVelocity = (Vector3)stream.ReceiveNext();
+            Quaternion syncRotation = (Quaternion)stream.ReceiveNext(); //sync object's rotation
+
+            syncTime = 0f;
+            syncDelay = Time.time - lastSynchronizationTime;
+            lastSynchronizationTime = Time.time;
+            syncEndPosition = syncPosition + syncVelocity * syncDelay;
+
+            syncEndPositionR = syncRotation * Quaternion.Euler(syncVelocity * syncDelay); //object start position for rotation
+            syncStartPosition = GetComponent<Rigidbody>().position;
+            syncStartPositionR = GetComponent<Rigidbody>().rotation; //object start position for rotation
+
             // Network player, receive data
             this.playerIDinEnemy = (int)stream.ReceiveNext();
         }

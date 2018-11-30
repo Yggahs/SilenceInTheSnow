@@ -49,9 +49,9 @@ public class BulletServer : Photon.MonoBehaviour, IPunObservable
             case 1:
                 channelMask = new Vector4(0, 1, 0, 0);
                 break;
-            //default:
-            //    channelMask = new Vector4(1, 1, 1, 1);
-            //    break;
+            default:
+                channelMask = new Vector4(0, 0, 0, 0);
+                break;
         }
         return channelMask;
     }

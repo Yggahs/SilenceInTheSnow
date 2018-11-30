@@ -48,4 +48,5 @@ MonoBehaviour:
   - Fire
   - OnGUI
   - Awake
+  - Update
   DisableAutoOpenWizard: 1

@@ -5,26 +5,27 @@ using UnityEngine;
 public class SpawnEnemies : Photon.MonoBehaviour {
     public GameObject spawnedEnemy;
     public bool stopSpawning = false;
-    public float spawnTime;
-    public float spawnDelay;
+    public float spawnTime = 5f;
+    public float spawnDelay = 2.5f;
     public int enemycount = 0;
     [PunRPC]
-    void Awake()
+    private void Awake()
     {
-        InvokeRepeating("SpawnEnemy", spawnTime, spawnDelay);
+        
+            InvokeRepeating("SpawnEnemy", spawnTime, spawnDelay);
+        
     }
     
     void SpawnEnemy()
     {
-        PhotonNetwork.Instantiate(spawnedEnemy.name, gameObject.transform.position, Quaternion.identity, 0);
-        enemycount++;
-        if (enemycount >= 10)
+
+        if (PhotonNetwork.playerList.Length >= 2)
         {
-            stopSpawning = true;
-        }
-        if (stopSpawning)
-        {
-            CancelInvoke("SpawnEnemy");
+            if (enemycount <= 9)
+            {
+            PhotonNetwork.Instantiate(spawnedEnemy.name, gameObject.transform.position, Quaternion.identity, 0);
+            enemycount++;
+            }
         }
     }
 }
