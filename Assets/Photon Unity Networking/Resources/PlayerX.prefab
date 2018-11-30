@@ -177,7 +177,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 116
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!64 &64877172358237466
 MeshCollider:
@@ -262,6 +262,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.3
   _attackAnimation: {fileID: 114175551230574330}
+  IsAttacking: 0
   cam: {fileID: 0}
   camPivot: {fileID: 0}
   playerIDinPlayer: 0

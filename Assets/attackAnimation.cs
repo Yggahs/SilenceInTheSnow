@@ -13,10 +13,16 @@ public class attackAnimation : MonoBehaviour {
 
     private void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.name == "Enemy(Clone)")
-        {
-            Debug.Log(gameObject.transform.parent.GetComponent<Player>().playerIDinPlayer);
-            collision.gameObject.GetComponent<AggroPlayers>().playerIDinEnemy = gameObject.transform.parent.GetComponent<Player>().playerIDinPlayer;
-        }
+        
+        
+
+            if (collision.gameObject.name == "Enemy(Clone)")
+            {
+            
+                //Debug.Log(gameObject.transform.parent.GetComponent<Player>().playerIDinPlayer);
+                collision.gameObject.GetComponent<AggroPlayers>().playerIDinEnemy = gameObject.transform.parent.GetComponent<Player>().playerIDinPlayer;
+            }
+            
+        
     }
 }

@@ -13,8 +13,7 @@ public class Player : Photon.MonoBehaviour {
 
     private Quaternion syncStartPositionR = Quaternion.Euler(Vector3.zero);
     private Quaternion syncEndPositionR = Quaternion.Euler(Vector3.zero);
- 
-    
+    public bool IsAttacking = false;
     //relative movement
     public Transform cam;
     public Transform camPivot;
@@ -35,6 +34,8 @@ public class Player : Photon.MonoBehaviour {
             stream.SendNext(GetComponent<Rigidbody>().velocity);
             stream.SendNext(GetComponent<Rigidbody>().rotation); //added for rotation
             stream.SendNext(playerIDinPlayer);
+            //stream.SendNext(GetComponent<Renderer>().material.color);
+
         }
         else
         {
@@ -55,6 +56,7 @@ public class Player : Photon.MonoBehaviour {
         }
 	}
 
+    
     void Awake()
     {
         
@@ -62,12 +64,33 @@ public class Player : Photon.MonoBehaviour {
         cam = GetComponent<Transform>();
         camPivot = GetComponent<Transform>();
         lastSynchronizationTime = Time.time;
-        
+        gameObject.transform.GetChild(0).GetComponent<MeshCollider>().enabled = false;
+
+        switch (playerIDinPlayer)
+        {
+            case 4:
+                ChangeColorTo(new Vector3(0, 175, 175));
+                break;
+            case 3:
+                ChangeColorTo(new Vector3(0, 255, 0));
+                break;
+            case 2:
+                ChangeColorTo(new Vector3(0, 0, 255));
+                break;
+            case 1:
+                ChangeColorTo(new Vector3(255, 0, 0));
+                break;
+            default:
+                ChangeColorTo(new Vector3(0, 0, 0));
+                break;
+        }
+
     }
 
     private void Start()
     {
         
+
         if (photonView.isMine)
         {
             Camera.main.transform.position = this.transform.position - this.transform.forward * 10 + this.transform.up * 3;
@@ -113,11 +136,18 @@ public class Player : Photon.MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.Space))
             GetComponent<Rigidbody>().MovePosition(GetComponent<Rigidbody>().position + Vector3.up * 2);
-        if (Input.GetKeyDown(KeyCode.E))
+
+        if (Input.GetMouseButtonDown(0))
         {
             _attackAnimation.attack();
-            //Fire();
+            gameObject.transform.GetChild(0).GetComponent<MeshCollider>().enabled = true;
+            Invoke("FalseAttack", 0.417f);
         }
+    }
+
+    void FalseAttack()
+    {
+        gameObject.transform.GetChild(0).GetComponent<MeshCollider>().enabled = false;
     }
 
     private void SyncedMovement()

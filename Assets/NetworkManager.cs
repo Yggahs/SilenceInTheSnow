@@ -5,12 +5,13 @@ using UnityEngine;
 
 
 public class NetworkManager : Photon.MonoBehaviour
-{
+{   
     private const string roomName = "RoomName";
     private TypedLobby lobbyName = new TypedLobby("Canvas_of_white", LobbyType.Default);
     private RoomInfo[] roomsList;
     public GameObject player;
     public GameObject droplets;
+    public GameObject ScoreUI;
     float timer = 0f;
     float endMatchTime = 600f; //600f for 10 mins, 60f for 1
     public Text text;
@@ -45,27 +46,40 @@ public class NetworkManager : Photon.MonoBehaviour
         }
     }
     void OnConnectedToMaster()
-    {
+    {   
         PhotonNetwork.JoinLobby(lobbyName);
     }
     void OnReceivedRoomListUpdate()
     {
         Debug.Log("Room was created");
+        ScoreUI.SetActive(false);
         roomsList = PhotonNetwork.GetRoomList();
+
     }
     
     void OnJoinedLobby()
     {       
-        Debug.Log("Joined Lobby");       
+        Debug.Log("Joined Lobby");
+        if (PhotonNetwork.inRoom == false)
+        {
+            Cursor.visible = true;
+        }
+        else
+        {
+            Cursor.visible = false;
+            ScoreUI.SetActive(true);
+        }
     }
     void OnJoinedRoom()
     {
         Debug.Log("Connected to Room");
         PhotonNetwork.Instantiate(player.name, Vector3.up * 5, Quaternion.identity, 0);
+        Cursor.lockState = CursorLockMode.Locked; 
+        
     }
     private void Update()
     {
-        if (PhotonNetwork.playerList.Length >= 2)
+            if (PhotonNetwork.playerList.Length >= 2)
         {
             Debug.Log(PhotonNetwork.playerList.Length);
             EndMatch();

@@ -46,12 +46,14 @@ public class AggroPlayers : Photon.MonoBehaviour, IPunObservable {
 
     void OnTriggerEnter(Collider collision)
     {
-        
-        if (collision.gameObject.tag == "sword")
-        {
-            playerIDinEnemy = collision.gameObject.transform.parent.gameObject.GetComponent<Player>().playerIDinPlayer;
-            Death();
-        }
+        //if (GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().IsAttacking == true)
+        //{
+            if (collision.gameObject.tag == "sword")
+            {
+                playerIDinEnemy = collision.gameObject.transform.parent.gameObject.GetComponent<Player>().playerIDinPlayer;
+                Death();
+            }
+        //}
     }
 
     void Death()

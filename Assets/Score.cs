@@ -23,7 +23,10 @@ public class Score : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-
+        if (PhotonNetwork.inRoom == true)
+        {
+            numbPlayer = PhotonNetwork.room.PlayerCount;
+        }
         //player1Score = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Menu>().scores.y;
         //player2Score = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Menu>().scores.w;
         //player3Score = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Menu>().scores.z;
@@ -40,7 +43,7 @@ public class Score : MonoBehaviour {
         score3.text = player3Score.ToString();
         score4.text = player4Score.ToString();
 
-        numbPlayer = PhotonNetwork.room.PlayerCount;
+
 
 
 
