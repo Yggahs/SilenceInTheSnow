@@ -16,7 +16,7 @@ public class Score : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
-        gameObject.SetActive(false);
+        
 
     }
 	
@@ -42,11 +42,7 @@ public class Score : MonoBehaviour {
 
         numbPlayer = PhotonNetwork.room.PlayerCount;
 
-        if (PhotonNetwork.inRoom == true)
-        {
-            gameObject.SetActive(true);
-        }
-        else gameObject.SetActive(false);
+
 
         if (numbPlayer == 1)
         {
