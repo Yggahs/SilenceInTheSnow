@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 
@@ -10,6 +11,9 @@ public class NetworkManager : Photon.MonoBehaviour
     private RoomInfo[] roomsList;
     public GameObject player;
     public GameObject droplets;
+    float timer = 0f;
+    float endMatchTime = 600f; //600f for 10 mins, 60f for 1
+    public Text text;
     
     // Use this for initialization
     void Start()
@@ -51,14 +55,38 @@ public class NetworkManager : Photon.MonoBehaviour
     }
     
     void OnJoinedLobby()
-    {
-        
-        Debug.Log("Joined Lobby");
+    {       
+        Debug.Log("Joined Lobby");       
     }
     void OnJoinedRoom()
     {
         Debug.Log("Connected to Room");
         PhotonNetwork.Instantiate(player.name, Vector3.up * 5, Quaternion.identity, 0);
+    }
+    private void Update()
+    {
+        if (PhotonNetwork.playerList.Length >= 2)
+        {
+            Debug.Log(PhotonNetwork.playerList.Length);
+            EndMatch();
+        }
+    }
+    private void EndMatch()
+    {
+
+        if (timer == endMatchTime)
+        {
+            timer += 0;
+            
+
+        }
+        else
+        {
+            timer += Time.deltaTime;
+            text.text = timer.ToString();
+        }
+        string TimerUI = string.Concat(timer.ToString(), "/", endMatchTime.ToString());
+        text.text = TimerUI;
         
     }
 }

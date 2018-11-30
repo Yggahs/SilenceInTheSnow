@@ -12,13 +12,11 @@ public class BulletServer : Photon.MonoBehaviour, IPunObservable
     public float splatScale = 1.0f;
     public GameObject Plane = null;
     public GameObject Player = null;
-    [SerializeField] public int playerID;
+    [SerializeField] public int playerIDinDroplet;
 
     private void Awake()
     {
         Plane = GameObject.Find("Plane");
-        //Player = GameObject.Find("PlayerX(Clone)");
-        //playerID = Player.GetComponent<Player>().playerID;
 
         if (photonView.isMine)
         {
@@ -31,14 +29,13 @@ public class BulletServer : Photon.MonoBehaviour, IPunObservable
         if (other.gameObject == Plane)
         {
             CreateSplat(other);
-            Debug.Log("player id is "+playerID);
             Destroy(gameObject);
         }
     }
 
     Vector4 ChooseChannelmask()
     {
-        switch (playerID)
+        switch (playerIDinDroplet)
         {
             case 4:
                 channelMask = new Vector4(1, 0, 0, 0);
@@ -52,9 +49,9 @@ public class BulletServer : Photon.MonoBehaviour, IPunObservable
             case 1:
                 channelMask = new Vector4(0, 1, 0, 0);
                 break;
-            //default:
-            //    channelMask = new Vector4(1, 1, 1, 1);
-            //    break;
+            default:
+                channelMask = new Vector4(0, 0, 0, 0);
+                break;
         }
         return channelMask;
     }
@@ -106,16 +103,16 @@ public class BulletServer : Photon.MonoBehaviour, IPunObservable
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
-        
+
         if (stream.isWriting)
         {
             // We own this player: send the others our data
-            stream.SendNext(playerID);
+            stream.SendNext(playerIDinDroplet);
         }
         else
         {
             // Network player, receive data
-            this.playerID = (int)stream.ReceiveNext();
+            this.playerIDinDroplet = (int)stream.ReceiveNext();
         }
     }
 }
