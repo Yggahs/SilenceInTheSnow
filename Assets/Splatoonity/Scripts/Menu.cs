@@ -8,14 +8,17 @@ public class Menu : Photon.MonoBehaviour {
 	public Texture2D sliderRed;
 	//public Texture2D sliderGreen;
 	public Texture2D sliderBlue;
-
+    public int score1, score2;
     // Use this for initialization
     //void Start () {
 
     //}
 
     // Update is called once per frame
-    
+    private void Update()
+    {
+        
+    }
     [PunRPC]
 	void OnGUI ()
     {
@@ -40,7 +43,7 @@ public class Menu : Photon.MonoBehaviour {
         //GUI.DrawTexture (new Rect (20 + menu.width + 20, 100, greenScore, 30), sliderGreen);
         //GUI.DrawTexture (new Rect (20 + menu.width + 20, 140, blueScore, 30), sliderBlue);
 
-
+        
 
     }
 	}
