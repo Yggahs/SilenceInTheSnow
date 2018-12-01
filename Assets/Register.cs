@@ -11,6 +11,7 @@ public class Register : MonoBehaviour
     public Button enterButton;
     private string Username, Email, Password, RePassword;
     private bool validEmail = false;
+    string CreateUserURL = "kunet.kingston.ac.uk/k1628052/Register.php";
 
     // Use this for initialization
     void Start()
@@ -75,19 +76,30 @@ public class Register : MonoBehaviour
 
         if (Username != "" && Email != "" && Password != "" && RePassword != "")
         {
-            
+
             //Check if the Passwords Match
-            
-                print("kek1");
-                if (Password == RePassword)
-                {
-                    print("kek0");
-                }
-                else passwordError.enabled = true;
+
+            if (Password == RePassword)
+            {
+                UserCreation(Username, Password, Email);
+
+            }
+            else passwordError.enabled = true;
             
         }
         else emptyFields.enabled = true;
         
+    }
+
+    public void UserCreation(string username, string password, string email)
+    {
+        WWWForm form = new WWWForm();
+        form.AddField("usernamePost", username);
+        form.AddField("passwordPost", password);
+        form.AddField("emailPost", email);
+
+ 
+        WWW www = new WWW(CreateUserURL, form);
     }
 
 
