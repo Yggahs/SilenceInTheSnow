@@ -28,20 +28,14 @@ public class AggroPlayers : Photon.MonoBehaviour, IPunObservable {
 
     void Awake()
     {
-        
+
         target = GameObject.FindWithTag("Player").transform;
+        
     }
 
     void Update()
     {
-        target = GameObject.FindWithTag("Player").transform;
-        
-        if (dead == false)
-        {
-            transform.LookAt(target);
-            transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
-        }
-       
+        FollowPlayer();  
     }
 
     void OnTriggerEnter(Collider collision)
@@ -175,6 +169,17 @@ public class AggroPlayers : Photon.MonoBehaviour, IPunObservable {
 
             // Network player, receive data
             this.playerIDinEnemy = (int)stream.ReceiveNext();
+        }
+    }
+
+    void FollowPlayer()
+    {
+        target = GameObject.FindWithTag("Player").transform;
+
+        if (!dead)
+        {
+            transform.LookAt(target);
+            transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
         }
     }
 }

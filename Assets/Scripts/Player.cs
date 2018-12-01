@@ -172,12 +172,4 @@ public class Player : Photon.MonoBehaviour {
         if (photonView.isMine)
             photonView.RPC("ChangeColorTo", PhotonTargets.OthersBuffered, color);
     }
-
-
-    //void Fire()
-    //{
-    //    GameObject droplet =  PhotonNetwork.Instantiate(droplets.name, gameObject.transform.position, Quaternion.identity,0) as GameObject;
-    //    droplet.GetComponent<BulletServer>().playerID = PhotonNetwork.player.ID;
-
-    //}
 }
