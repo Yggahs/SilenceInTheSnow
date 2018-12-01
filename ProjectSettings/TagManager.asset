@@ -5,7 +5,12 @@ TagManager:
   serializedVersion: 2
   tags:
   - blood
+<<<<<<< HEAD
   - sword
+=======
+  - ErrorRegistration
+  - emailError
+>>>>>>> Dario2
   layers:
   - Default
   - TransparentFX

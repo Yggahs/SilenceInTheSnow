@@ -13,10 +13,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PixelRect:
     serializedVersion: 2
+<<<<<<< HEAD
     x: 8
     y: 51
     width: 1904
     height: 981
+=======
+    x: 1
+    y: 51
+    width: 958
+    height: 988
+>>>>>>> Dario2
   m_ShowMode: 4
   m_Title: 
   m_RootView: {fileID: 6}
@@ -40,12 +47,21 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 30
+<<<<<<< HEAD
     width: 1904
     height: 931
   m_MinSize: {x: 683, y: 342}
   m_MaxSize: {x: 12008, y: 8042}
   vertical: 0
   controlID: 33
+=======
+    width: 958
+    height: 938
+  m_MinSize: {x: 683, y: 342}
+  m_MaxSize: {x: 12008, y: 8042}
+  vertical: 0
+  controlID: 111
+>>>>>>> Dario2
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -60,6 +76,7 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
+<<<<<<< HEAD
     x: 1627
     y: 0
     width: 277
@@ -69,6 +86,17 @@ MonoBehaviour:
   m_ActualView: {fileID: 15}
   m_Panes:
   - {fileID: 15}
+=======
+    x: 681
+    y: 0
+    width: 277
+    height: 938
+  m_MinSize: {x: 277, y: 71}
+  m_MaxSize: {x: 4002, y: 4021}
+  m_ActualView: {fileID: 14}
+  m_Panes:
+  - {fileID: 14}
+>>>>>>> Dario2
   m_Selected: 0
   m_LastSelected: 0
 --- !u!114 &4
@@ -87,6 +115,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
+<<<<<<< HEAD
     width: 247
     height: 660
   m_MinSize: {x: 200, y: 200}
@@ -95,6 +124,15 @@ MonoBehaviour:
   m_Panes:
   - {fileID: 16}
   - {fileID: 13}
+=======
+    width: 202
+    height: 583
+  m_MinSize: {x: 202, y: 221}
+  m_MaxSize: {x: 4002, y: 4021}
+  m_ActualView: {fileID: 15}
+  m_Panes:
+  - {fileID: 15}
+>>>>>>> Dario2
   m_Selected: 0
   m_LastSelected: 1
 --- !u!114 &5
@@ -112,6 +150,7 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
+<<<<<<< HEAD
     y: 660
     width: 1627
     height: 271
@@ -121,6 +160,17 @@ MonoBehaviour:
   m_Panes:
   - {fileID: 14}
   - {fileID: 19}
+=======
+    y: 583
+    width: 681
+    height: 355
+  m_MinSize: {x: 102, y: 121}
+  m_MaxSize: {x: 4002, y: 4021}
+  m_ActualView: {fileID: 18}
+  m_Panes:
+  - {fileID: 13}
+  - {fileID: 18}
+>>>>>>> Dario2
   m_Selected: 1
   m_LastSelected: 0
 --- !u!114 &6
@@ -142,9 +192,15 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
+<<<<<<< HEAD
     width: 1904
     height: 981
   m_MinSize: {x: 950, y: 392}
+=======
+    width: 958
+    height: 988
+  m_MinSize: {x: 950, y: 300}
+>>>>>>> Dario2
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &7
 MonoBehaviour:
@@ -162,7 +218,11 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
+<<<<<<< HEAD
     width: 1904
+=======
+    width: 958
+>>>>>>> Dario2
     height: 30
   m_MinSize: {x: 0, y: 0}
   m_MaxSize: {x: 0, y: 0}
@@ -182,8 +242,13 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
+<<<<<<< HEAD
     y: 961
     width: 1904
+=======
+    y: 968
+    width: 958
+>>>>>>> Dario2
     height: 20
   m_MinSize: {x: 0, y: 0}
   m_MaxSize: {x: 0, y: 0}
@@ -205,12 +270,21 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
+<<<<<<< HEAD
     width: 1627
     height: 931
   m_MinSize: {x: 406, y: 342}
   m_MaxSize: {x: 8006, y: 8042}
   vertical: 1
   controlID: 11
+=======
+    width: 681
+    height: 938
+  m_MinSize: {x: 406, y: 342}
+  m_MaxSize: {x: 8006, y: 8042}
+  vertical: 1
+  controlID: 112
+>>>>>>> Dario2
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -229,12 +303,21 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
+<<<<<<< HEAD
     width: 1627
     height: 660
   m_MinSize: {x: 406, y: 221}
   m_MaxSize: {x: 8006, y: 4021}
   vertical: 0
   controlID: 76
+=======
+    width: 681
+    height: 583
+  m_MinSize: {x: 406, y: 221}
+  m_MaxSize: {x: 8006, y: 4021}
+  vertical: 0
+  controlID: 113
+>>>>>>> Dario2
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -249,19 +332,34 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
+<<<<<<< HEAD
     x: 247
     y: 0
     width: 1380
     height: 660
+=======
+    x: 202
+    y: 0
+    width: 479
+    height: 583
+>>>>>>> Dario2
   m_MinSize: {x: 204, y: 221}
   m_MaxSize: {x: 4004, y: 4021}
   m_ActualView: {fileID: 18}
   m_Panes:
+<<<<<<< HEAD
   - {fileID: 18}
   - {fileID: 17}
   - {fileID: 12}
   m_Selected: 0
   m_LastSelected: 0
+=======
+  - {fileID: 16}
+  - {fileID: 17}
+  - {fileID: 12}
+  m_Selected: 0
+  m_LastSelected: 1
+>>>>>>> Dario2
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -358,6 +456,40 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 1
+  m_Script: {fileID: 12019, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
+  m_TitleContent:
+    m_Text: Inspector
+    m_Image: {fileID: -2667387946076563598, guid: 0000000000000000d000000000000000,
+      type: 0}
+    m_Tooltip: 
+  m_Pos:
+    serializedVersion: 2
+    x: 205
+    y: 100
+    width: 475
+    height: 562
+  m_PersistentViewDataDictionary: {fileID: 0}
+  m_ObjectsLockedBeforeSerialization: []
+  m_InstanceIDsLockedBeforeSerialization: 
+  m_LockTracker:
+    m_IsLocked: 0
+  m_PreviewResizer:
+    m_CachedPref: 100
+    m_ControlHash: -371814159
+    m_PrefName: Preview_InspectorPreview
+  m_PreviewWindow: {fileID: 0}
+--- !u!114 &13
+MonoBehaviour:
+  m_ObjectHideFlags: 52
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 1
   m_Script: {fileID: 12014, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: 
   m_EditorClassIdentifier: 
@@ -370,10 +502,17 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
+<<<<<<< HEAD
     x: 8
     y: 760
     width: 1625
     height: 250
+=======
+    x: 1
+    y: 683
+    width: 679
+    height: 334
+>>>>>>> Dario2
   m_PersistentViewDataDictionary: {fileID: 0}
   m_SearchFilter:
     m_NameFilter: 
@@ -397,10 +536,17 @@ MonoBehaviour:
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
+<<<<<<< HEAD
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: f22c0000
     m_LastClickedID: 11506
     m_ExpandedIDs: 00000000f22c0000c82d0000d62d00007a2f00002a3100004c36000000ca9a3b
+=======
+    scrollPos: {x: 0, y: 79}
+    m_SelectedIDs: 82360000
+    m_LastClickedID: 13954
+    m_ExpandedIDs: 0000000082360000ca360000d836000090370000b0380000fe3b000000ca9a3b
+>>>>>>> Dario2
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -428,7 +574,11 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
+<<<<<<< HEAD
     m_ExpandedIDs: 00000000f22c0000c82d0000d62d00007a2f00002a3100004c360000
+=======
+    m_ExpandedIDs: 0000000082360000ca360000d836000090370000b0380000fe3b0000
+>>>>>>> Dario2
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -453,10 +603,17 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
+<<<<<<< HEAD
     m_SelectedInstanceIDs: 8c360000
     m_LastClickedInstanceID: 13964
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c6230000463100004ea1fcff00000000cc45fcffb624fcffc032faff34310000e02d0000
+=======
+    m_SelectedInstanceIDs: 6486ffff
+    m_LastClickedInstanceID: -31132
+    m_HadKeyboardFocusLastEvent: 1
+    m_ExpandedInstanceIDs: c6230000463100004ea1fcff000000005c310000
+>>>>>>> Dario2
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -483,7 +640,11 @@ MonoBehaviour:
     m_ScrollPosition: {x: 0, y: 0.5}
     m_GridSize: 64
   m_DirectoriesAreaWidth: 306
+<<<<<<< HEAD
 --- !u!114 &15
+=======
+--- !u!114 &14
+>>>>>>> Dario2
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -503,21 +664,32 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
+<<<<<<< HEAD
     x: 1637
     y: 100
     width: 275
     height: 910
+=======
+    x: 684
+    y: 100
+    width: 275
+    height: 917
+>>>>>>> Dario2
   m_PersistentViewDataDictionary: {fileID: 0}
   m_ObjectsLockedBeforeSerialization: []
-  m_InstanceIDsLockedBeforeSerialization: 
+  m_InstanceIDsLockedBeforeSerialization: 7a86ffff
   m_LockTracker:
-    m_IsLocked: 0
+    m_IsLocked: 1
   m_PreviewResizer:
     m_CachedPref: 160
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_PreviewWindow: {fileID: 0}
+<<<<<<< HEAD
 --- !u!114 &16
+=======
+--- !u!114 &15
+>>>>>>> Dario2
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -537,6 +709,7 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
+<<<<<<< HEAD
     x: 8
     y: 100
     width: 245
@@ -547,6 +720,18 @@ MonoBehaviour:
     m_SelectedIDs: 
     m_LastClickedID: 0
     m_ExpandedIDs: fe34ffffaa35ffffdc38ffffa4f1ffff48f2ffff82f5ffffd0fbffff00000000
+=======
+    x: 1
+    y: 100
+    width: 200
+    height: 562
+  m_PersistentViewDataDictionary: {fileID: 0}
+  m_TreeViewState:
+    scrollPos: {x: 0, y: 0}
+    m_SelectedIDs: 6086ffff
+    m_LastClickedID: -31136
+    m_ExpandedIDs: 8cc9fdff5886ffff6286ffff6486ffff6686ffff7a86ffffde9dffff00000000
+>>>>>>> Dario2
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -570,7 +755,11 @@ MonoBehaviour:
   m_LockTracker:
     m_IsLocked: 0
   m_CurrentSortingName: TransformSorting
+<<<<<<< HEAD
 --- !u!114 &17
+=======
+--- !u!114 &16
+>>>>>>> Dario2
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -590,6 +779,7 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
+<<<<<<< HEAD
     x: 619
     y: 19
     width: 748
@@ -604,6 +794,22 @@ MonoBehaviour:
     m_Target: {x: 2.5895317, y: 3.998662, z: -8.466993}
     speed: 2
     m_Value: {x: 2.5895317, y: 3.998662, z: -8.466993}
+=======
+    x: 205
+    y: 100
+    width: 475
+    height: 562
+  m_PersistentViewDataDictionary: {fileID: 0}
+  m_SceneLighting: 1
+  lastFramingTime: 7488.183904988924
+  m_2DMode: 1
+  m_isRotationLocked: 0
+  m_AudioPlay: 0
+  m_Position:
+    m_Target: {x: 215.96852, y: 111.910835, z: 0}
+    speed: 2
+    m_Value: {x: 215.96852, y: 111.910835, z: 0}
+>>>>>>> Dario2
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -623,14 +829,15 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
     yGrid:
-      m_Target: 1
-      speed: 2
-      m_Value: 1
-    zGrid:
       m_Target: 0
       speed: 2
       m_Value: 0
+    zGrid:
+      m_Target: 1
+      speed: 2
+      m_Value: 1
   m_Rotation:
+<<<<<<< HEAD
     m_Target: {x: -0.023404004, y: -0.017034546, z: 0.00044875286, w: -0.9995814}
     speed: 2
     m_Value: {x: -0.023404004, y: -0.017034546, z: 0.0004487529, w: -0.9995814}
@@ -638,18 +845,35 @@ MonoBehaviour:
     m_Target: 0.6385511
     speed: 2
     m_Value: 0.6385511
-  m_Ortho:
-    m_Target: 0
+=======
+    m_Target: {x: 0, y: 0, z: 0, w: 1}
     speed: 2
-    m_Value: 0
+    m_Value: {x: 0, y: 0, z: 0, w: 1}
+  m_Size:
+    m_Target: 321.49814
+    speed: 2
+    m_Value: 321.49814
+>>>>>>> Dario2
+  m_Ortho:
+    m_Target: 1
+    speed: 2
+    m_Value: 1
   m_ShowGlobalGrid: 1
+<<<<<<< HEAD
   m_LastSceneViewRotation: {x: -0.042337198, y: 0.699471, z: -0.7121932, w: -0.041579682}
+=======
+  m_LastSceneViewRotation: {x: -0.22106132, y: -0.007878733, z: 0.0017868024, w: -0.97522646}
+>>>>>>> Dario2
   m_LastSceneViewOrtho: 0
   m_ReplacementShader: {fileID: 0}
   m_ReplacementString: 
   m_LastLockedObject: {fileID: 0}
   m_ViewIsLockedToObject: 0
+<<<<<<< HEAD
 --- !u!114 &18
+=======
+--- !u!114 &17
+>>>>>>> Dario2
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -669,10 +893,17 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
+<<<<<<< HEAD
     x: 257
     y: 100
     width: 1376
     height: 639
+=======
+    x: 205
+    y: 100
+    width: 475
+    height: 562
+>>>>>>> Dario2
   m_PersistentViewDataDictionary: {fileID: 0}
   m_MaximizeOnPlay: 0
   m_Gizmos: 0
@@ -684,10 +915,17 @@ MonoBehaviour:
     m_VRangeLocked: 0
     hZoomLockedByDefault: 0
     vZoomLockedByDefault: 0
+<<<<<<< HEAD
     m_HBaseRangeMin: -688
     m_HBaseRangeMax: 688
     m_VBaseRangeMin: -311
     m_VBaseRangeMax: 311
+=======
+    m_HBaseRangeMin: -237.5
+    m_HBaseRangeMax: 237.5
+    m_VBaseRangeMin: -272.5
+    m_VBaseRangeMax: 272.5
+>>>>>>> Dario2
     m_HAllowExceedBaseRangeMin: 1
     m_HAllowExceedBaseRangeMax: 1
     m_VAllowExceedBaseRangeMin: 1
@@ -696,7 +934,7 @@ MonoBehaviour:
     m_HSlider: 0
     m_VSlider: 0
     m_IgnoreScrollWheelUntilClicked: 0
-    m_EnableMouseInput: 1
+    m_EnableMouseInput: 0
     m_EnableSliderZoomHorizontal: 0
     m_EnableSliderZoomVertical: 0
     m_UniformScale: 1
@@ -705,30 +943,52 @@ MonoBehaviour:
       serializedVersion: 2
       x: 0
       y: 17
+<<<<<<< HEAD
       width: 1376
       height: 622
     m_Scale: {x: 1, y: 1}
     m_Translation: {x: 688, y: 311}
+=======
+      width: 475
+      height: 545
+    m_Scale: {x: 1, y: 1}
+    m_Translation: {x: 237.5, y: 272.5}
+>>>>>>> Dario2
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
+<<<<<<< HEAD
       x: -688
       y: -311
       width: 1376
       height: 622
+=======
+      x: -237.5
+      y: -272.5
+      width: 475
+      height: 545
+>>>>>>> Dario2
     m_MinimalGUI: 1
   m_defaultScale: 1
   m_TargetTexture: {fileID: 0}
   m_CurrentColorSpace: 0
+<<<<<<< HEAD
   m_LastWindowPixelSize: {x: 1376, y: 639}
+=======
+  m_LastWindowPixelSize: {x: 475, y: 562}
+>>>>>>> Dario2
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
   m_LowResolutionForAspectRatios: 01000000000100000100
   m_XRRenderMode: 0
+<<<<<<< HEAD
 --- !u!114 &19
+=======
+--- !u!114 &18
+>>>>>>> Dario2
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -748,8 +1008,15 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
+<<<<<<< HEAD
     x: 8
     y: 760
     width: 1625
     height: 250
+=======
+    x: 1
+    y: 683
+    width: 679
+    height: 334
+>>>>>>> Dario2
   m_PersistentViewDataDictionary: {fileID: 0}
