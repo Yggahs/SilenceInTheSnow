@@ -20,6 +20,7 @@ public class Player : Photon.MonoBehaviour {
     float heading = 0;
 
     Vector2 input;
+    
 
 
 
@@ -28,6 +29,7 @@ public class Player : Photon.MonoBehaviour {
     // Use this for initialization
     void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
+ 
         if (stream.isWriting)
         {
             stream.SendNext(GetComponent<Rigidbody>().position);
