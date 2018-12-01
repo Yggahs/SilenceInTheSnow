@@ -13,13 +13,15 @@ public class NetworkManager : Photon.MonoBehaviour
     public GameObject droplets;
     public GameObject ScoreUI;
     float timer = 0f;
-    float endMatchTime = 600f; //600f for 10 mins, 60f for 1
+    float endMatchTime = 600f;
     public Text text;
     
     // Use this for initialization
     void Start()
     {
         PhotonNetwork.ConnectUsingSettings("v4.2");
+        ScoreUI.SetActive(false);
+        Debug.Log("msto");
     }
     void OnGUI()
     {
@@ -52,30 +54,29 @@ public class NetworkManager : Photon.MonoBehaviour
     void OnReceivedRoomListUpdate()
     {
         Debug.Log("Room was created");
-        ScoreUI.SetActive(false);
         roomsList = PhotonNetwork.GetRoomList();
-
-    }
-    
+ 
+    }    
     void OnJoinedLobby()
     {       
         Debug.Log("Joined Lobby");
-        if (PhotonNetwork.inRoom == false)
+        if (!PhotonNetwork.inRoom)
         {
-            Cursor.visible = true;
+            Cursor.visible = true;     
         }
         else
         {
             Cursor.visible = false;
-            ScoreUI.SetActive(true);
         }
+        
     }
     void OnJoinedRoom()
     {
-        Debug.Log("Connected to Room");
-        PhotonNetwork.Instantiate(player.name, Vector3.up * 5, Quaternion.identity, 0);
-        Cursor.lockState = CursorLockMode.Locked; 
         
+        Debug.Log("Connected to Room");
+        PhotonNetwork.Instantiate(player.name, new Vector3(Random.Range(-50,50), 3,Random.Range(-50, 50)), Quaternion.identity, 0);
+        Cursor.lockState = CursorLockMode.Locked;
+        ScoreUI.SetActive(true);
     }
     private void Update()
     {
@@ -87,12 +88,9 @@ public class NetworkManager : Photon.MonoBehaviour
     }
     private void EndMatch()
     {
-
         if (timer == endMatchTime)
         {
             timer += 0;
-            
-
         }
         else
         {
@@ -100,8 +98,7 @@ public class NetworkManager : Photon.MonoBehaviour
             text.text = timer.ToString();
         }
         string TimerUI = string.Concat(timer.ToString(), "/", endMatchTime.ToString());
-        text.text = TimerUI;
-        
+        text.text = TimerUI;        
     }
 }
 
