@@ -126,10 +126,10 @@ public class AggroPlayers : Photon.MonoBehaviour, IPunObservable {
     void ChangePosition(Vector3 myposition)
     {
         GetComponent<Transform>().position = myposition;
-        if (photonView.isMine)
-        {
+        //if (photonView.isMine)
+        //{
             photonView.RPC("ChangePostionTo", PhotonTargets.OthersBuffered, myposition);
-        }
+        //}
     }
 
     void Bleed()
