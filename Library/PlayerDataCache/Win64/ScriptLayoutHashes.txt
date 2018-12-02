@@ -1,6 +1,6 @@
 WindowsStandalone
 PlayerPath?
-C:/Users/aless/Desktop/UnityBuilds/multiplayer test 2_Data/multiplayer test 2.exe
+C:/Users/aless/Desktop/UnityBuilds/multiplayer test 2.exe
 SceneListBegin?
 Assets/Scenes/SampleScene/SampleScenew.unity
 SceneListEnd?
