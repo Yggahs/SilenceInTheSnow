@@ -21,7 +21,6 @@ public class NetworkManager : Photon.MonoBehaviour
     {
         PhotonNetwork.ConnectUsingSettings("v4.2");
         ScoreUI.SetActive(false);
-        Debug.Log("msto");
     }
     void OnGUI()
     {
@@ -82,7 +81,7 @@ public class NetworkManager : Photon.MonoBehaviour
     {
             if (PhotonNetwork.playerList.Length >= 2)
         {
-            Debug.Log(PhotonNetwork.playerList.Length);
+            //Debug.Log(PhotonNetwork.playerList.Length);
             EndMatch();
         }
     }
@@ -91,6 +90,7 @@ public class NetworkManager : Photon.MonoBehaviour
         if (timer == endMatchTime)
         {
             timer += 0;
+            //wincondition here
         }
         else
         {

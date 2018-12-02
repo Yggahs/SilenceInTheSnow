@@ -15,15 +15,15 @@ public class AggroPlayers : Photon.MonoBehaviour, IPunObservable {
     [SerializeField] public int playerIDinEnemy;
     public GameObject droplets;
 
-    private float lastSynchronizationTime = 0f;
-    private float syncDelay = 0f;
-    private float syncTime = 0f;
+    //private float lastSynchronizationTime = 0f;
+    //private float syncDelay = 0f;
+    //private float syncTime = 0f;
 
-    private Vector3 syncStartPosition = Vector3.zero;
-    private Vector3 syncEndPosition = Vector3.zero;
+    //private Vector3 syncStartPosition = Vector3.zero;
+    //private Vector3 syncEndPosition = Vector3.zero;
 
-    private Quaternion syncStartPositionR = Quaternion.Euler(Vector3.zero);
-    private Quaternion syncEndPositionR = Quaternion.Euler(Vector3.zero);
+    //private Quaternion syncStartPositionR = Quaternion.Euler(Vector3.zero);
+    //private Quaternion syncEndPositionR = Quaternion.Euler(Vector3.zero);
 
 
     void Awake()
@@ -40,19 +40,16 @@ public class AggroPlayers : Photon.MonoBehaviour, IPunObservable {
 
     void OnTriggerEnter(Collider collision)
     {
-        //if (GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().IsAttacking == true)
-        //{
             if (collision.gameObject.tag == "sword")
             {
                 playerIDinEnemy = collision.gameObject.transform.parent.gameObject.GetComponent<Player>().playerIDinPlayer;
                 Death();
             }
-        //}
     }
 
     void Death()
     {
-        //Debug.Log("Killed by player "+playerIDinEnemy);
+        Debug.Log("Killed by player "+playerIDinEnemy);
         dead = true;
         Bleed();
         CreateSplat();
@@ -126,10 +123,10 @@ public class AggroPlayers : Photon.MonoBehaviour, IPunObservable {
     void ChangePosition(Vector3 myposition)
     {
         GetComponent<Transform>().position = myposition;
-        //if (photonView.isMine)
-        //{
+        if (photonView.isMine)
+        {
             photonView.RPC("ChangePostionTo", PhotonTargets.OthersBuffered, myposition);
-        //}
+        }
     }
 
     void Bleed()
@@ -146,28 +143,10 @@ public class AggroPlayers : Photon.MonoBehaviour, IPunObservable {
     {
         if (stream.isWriting)
         {
-            stream.SendNext(GetComponent<Rigidbody>().position);
-            stream.SendNext(GetComponent<Rigidbody>().velocity);
-            stream.SendNext(GetComponent<Rigidbody>().rotation); //added for rotation
-            // We own this player: send the others our data
             stream.SendNext(playerIDinEnemy);
         }
         else
         {
-            Vector3 syncPosition = (Vector3)stream.ReceiveNext();
-            Vector3 syncVelocity = (Vector3)stream.ReceiveNext();
-            Quaternion syncRotation = (Quaternion)stream.ReceiveNext(); //sync object's rotation
-
-            syncTime = 0f;
-            syncDelay = Time.time - lastSynchronizationTime;
-            lastSynchronizationTime = Time.time;
-            syncEndPosition = syncPosition + syncVelocity * syncDelay;
-
-            syncEndPositionR = syncRotation * Quaternion.Euler(syncVelocity * syncDelay); //object start position for rotation
-            syncStartPosition = GetComponent<Rigidbody>().position;
-            syncStartPositionR = GetComponent<Rigidbody>().rotation; //object start position for rotation
-
-            // Network player, receive data
             this.playerIDinEnemy = (int)stream.ReceiveNext();
         }
     }
@@ -176,7 +155,7 @@ public class AggroPlayers : Photon.MonoBehaviour, IPunObservable {
     {
         target = GameObject.FindWithTag("Player").transform;
 
-        if (!dead)
+        if (dead == false)
         {
             transform.LookAt(target);
             transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);

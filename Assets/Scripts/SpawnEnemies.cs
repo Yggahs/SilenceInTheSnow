@@ -18,7 +18,6 @@ public class SpawnEnemies : Photon.MonoBehaviour {
     
     void SpawnEnemy()
     {
-
         if (PhotonNetwork.playerList.Length >= 2)
         {
             if (enemycount <= 9)
