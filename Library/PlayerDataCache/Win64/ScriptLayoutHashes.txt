@@ -172,7 +172,7 @@ c9ba665ceb7810b68fb3087f394ad76a Assembly-CSharp.dll:.WorkerInGame
 f16835701e71dd5d6fb1fed4b7aff1d8 Unity.TextMeshPro.dll:TMPro.TMP_Asset
 067427652b58b8867df9781554d4a023 Assembly-CSharp.dll:.OnClickInstantiate
 ee67b643d4de82f8daa5a72cba8e58c4 Assembly-CSharp.dll:.MessageOverlay
-8fef8c44af4d58588d4343149868c68c Assembly-CSharp.dll:.Player
+220e14549828ec31bd3df4dca7a4e97a Assembly-CSharp.dll:.Player
 ad24f3e8618f76dd8b79fb5e27fca67e Assembly-CSharp.dll:.ColorPerPlayer
 486cd95c82d8305219c352c06b776e1f Assembly-CSharp.dll:.NetworkCharacter
 486cd95c82d8305219c352c06b776e1f Assembly-CSharp.dll:.attackAnimation

@@ -13,7 +13,7 @@ public class Player : Photon.MonoBehaviour {
 
     private Quaternion syncStartPositionR = Quaternion.Euler(Vector3.zero);
     private Quaternion syncEndPositionR = Quaternion.Euler(Vector3.zero);
-    public bool IsAttacking = false;
+    //public bool IsAttacking = false;
     //relative movement
     public Transform cam;
     public Transform camPivot;
@@ -36,6 +36,7 @@ public class Player : Photon.MonoBehaviour {
             stream.SendNext(GetComponent<Rigidbody>().velocity);
             stream.SendNext(GetComponent<Rigidbody>().rotation); //added for rotation
             stream.SendNext(playerIDinPlayer);
+            stream.SendNext(gameObject.transform.GetChild(0).GetComponent<MeshCollider>().enabled);
             //stream.SendNext(GetComponent<Renderer>().material.color);
 
         }
@@ -55,6 +56,7 @@ public class Player : Photon.MonoBehaviour {
             syncStartPositionR = GetComponent<Rigidbody>().rotation; //object start position for rotation
 
             this.playerIDinPlayer = (int)stream.ReceiveNext();
+            this.gameObject.transform.GetChild(0).GetComponent<MeshCollider>().enabled = (bool)stream.ReceiveNext();
         }
 	}
 
@@ -143,11 +145,12 @@ public class Player : Photon.MonoBehaviour {
         {
             _attackAnimation.attack();
             gameObject.transform.GetChild(0).GetComponent<MeshCollider>().enabled = true;
-            Invoke("FalseAttack", 0.417f);
+            Invoke("DeactivateSword", 0.417f);
+            //Debug.Log(gameObject.transform.GetChild(0).GetComponent<MeshCollider>().enabled);
         }
     }
 
-    void FalseAttack()
+    void DeactivateSword()
     {
         gameObject.transform.GetChild(0).GetComponent<MeshCollider>().enabled = false;
     }
