@@ -14,22 +14,10 @@ public class AggroPlayers : Photon.MonoBehaviour, IPunObservable {
     int moveSpeed = 3; //move speed
     [SerializeField] public int playerIDinEnemy;
     public GameObject droplets;
-
-    //private float lastSynchronizationTime = 0f;
-    //private float syncDelay = 0f;
-    //private float syncTime = 0f;
-
-    //private Vector3 syncStartPosition = Vector3.zero;
-    //private Vector3 syncEndPosition = Vector3.zero;
-
-    //private Quaternion syncStartPositionR = Quaternion.Euler(Vector3.zero);
-    //private Quaternion syncEndPositionR = Quaternion.Euler(Vector3.zero);
-
-
     void Awake()
     {
 
-        target = GameObject.FindWithTag("Player").transform;
+        target = GameObject.FindWithTag("Player").transform; //set enemy target
         
     }
 
@@ -40,6 +28,7 @@ public class AggroPlayers : Photon.MonoBehaviour, IPunObservable {
 
     void OnTriggerEnter(Collider collision)
     {
+            //if hit by a player's sword, leave a blood splatter, then die
             if (collision.gameObject.tag == "sword")
             {
                 playerIDinEnemy = collision.gameObject.transform.parent.gameObject.GetComponent<Player>().playerIDinPlayer;
@@ -49,15 +38,13 @@ public class AggroPlayers : Photon.MonoBehaviour, IPunObservable {
 
     void Death()
     {
-        Debug.Log("Killed by player "+playerIDinEnemy);
         dead = true;
-        Bleed();
+        Bleed(); //spawn blood droplets
         CreateSplat();
         FindObjectOfType<SpawnEnemies>().enemycount--;
         Destroy(gameObject, 1);
-
     }
-
+    //switch color of splatter based on player id
     Vector4 ChooseChannelmask()
     {
         switch (playerIDinEnemy)
@@ -81,7 +68,7 @@ public class AggroPlayers : Photon.MonoBehaviour, IPunObservable {
         return channelMask;
     }
 
-
+    //create splat object
     void CreateSplat()
     {
         // Get how many splats are in the splat atlas
@@ -116,6 +103,7 @@ public class AggroPlayers : Photon.MonoBehaviour, IPunObservable {
             SplatManagerSystem.instance.AddSplat(newSplat);
 
             GameObject.Destroy(newSplatObject);
+            
         }
     }
 
@@ -128,17 +116,17 @@ public class AggroPlayers : Photon.MonoBehaviour, IPunObservable {
             photonView.RPC("ChangePostionTo", PhotonTargets.OthersBuffered, myposition);
         }
     }
-
+    //instantiate blood droplets over network
     void Bleed()
     {
         if (photonView.isMine)
         {
             GameObject droplet = PhotonNetwork.Instantiate(droplets.name, gameObject.transform.position, Quaternion.identity, 0) as GameObject;
-            droplet.GetComponent<BulletServer>().playerIDinDroplet = playerIDinEnemy;
+            droplet.GetComponent<Droplet>().playerIDinDroplet = playerIDinEnemy;
         }
     }
         
-
+    //serialize player id who killed enemy
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
         if (stream.isWriting)
@@ -150,12 +138,12 @@ public class AggroPlayers : Photon.MonoBehaviour, IPunObservable {
             this.playerIDinEnemy = (int)stream.ReceiveNext();
         }
     }
-
+    //basic enemy ai
     void FollowPlayer()
     {
         target = GameObject.FindWithTag("Player").transform;
 
-        if (dead == false)
+        if (!dead)
         {
             transform.LookAt(target);
             transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletServer : Photon.MonoBehaviour, IPunObservable
+public class Droplet : Photon.MonoBehaviour, IPunObservable
 {
     Vector4 channelMask = new Vector4(1, 0, 0, 0);
 
@@ -14,6 +14,7 @@ public class BulletServer : Photon.MonoBehaviour, IPunObservable
     public GameObject Player = null;
     [SerializeField] public int playerIDinDroplet;
 
+    //find the plane the will destroy the droplet, have droplet fly out of the enemy's back
     private void Awake()
     {
         Plane = GameObject.Find("Plane");
@@ -24,6 +25,7 @@ public class BulletServer : Photon.MonoBehaviour, IPunObservable
         }
     }
 
+    //if it hits the plane, create a splat at contact position and destroy the droplet
     void OnCollisionEnter(Collision other)
     {
         if (other.gameObject == Plane)
@@ -32,7 +34,7 @@ public class BulletServer : Photon.MonoBehaviour, IPunObservable
             Destroy(gameObject);
         }
     }
-
+    //choose color based on the player who killed the enemy's id
     Vector4 ChooseChannelmask()
     {
         switch (playerIDinDroplet)
@@ -56,7 +58,7 @@ public class BulletServer : Photon.MonoBehaviour, IPunObservable
         return channelMask;
     }
 
-    
+    //create splatter on the ground
     void CreateSplat(Collision other)
     {
         // Get how many splats are in the splat atlas
@@ -90,7 +92,7 @@ public class BulletServer : Photon.MonoBehaviour, IPunObservable
         SplatManagerSystem.instance.AddSplat(newSplat);
         GameObject.Destroy(newSplatObject);
     }
-
+    //sync position of the droplet over the network
     [PunRPC]
     void ChangePosition(Vector3 myposition)
     {
@@ -100,7 +102,7 @@ public class BulletServer : Photon.MonoBehaviour, IPunObservable
             photonView.RPC("ChangePostionTo", PhotonTargets.OthersBuffered, myposition);
         }
     }
-
+    //serialize the player who killed the enemy's id
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
 

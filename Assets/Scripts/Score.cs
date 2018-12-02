@@ -31,12 +31,17 @@ public class Score : MonoBehaviour {
         //player2Score = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Menu>().scores.w;
         //player3Score = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Menu>().scores.z;
         //player4Score = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Menu>().scores.x;
+
+        //scores are based on the amount of space that the splatters occupy, so they need to be multiplied by 5120 to have a significant score
+
         scores = SplatManagerSystem.instance.scores;
 
-        player1Score = (int)(scores.y*5120);
+        player1Score = (int)(scores.y * 5120);
         player2Score = (int)(scores.w * 5120);
         player3Score = (int)(scores.z * 5120);
         player4Score = (int)(scores.x * 5120);
+
+        //have scores appear on the ui
 
         score1.text = player1Score.ToString();
         score2.text = player2Score.ToString();
@@ -45,7 +50,7 @@ public class Score : MonoBehaviour {
 
 
 
-
+        //activate a score ui every time a player joins
 
         if (numbPlayer == 1)
         {

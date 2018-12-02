@@ -20,8 +20,9 @@ public class NetworkManager : Photon.MonoBehaviour
     void Start()
     {
         PhotonNetwork.ConnectUsingSettings("v4.2");
-        ScoreUI.SetActive(false);
+        ScoreUI.SetActive(false); //sets scores inactive while not playing
     }
+    //create server / join room buttons
     void OnGUI()
     {
         if (!PhotonNetwork.connected)
@@ -59,6 +60,7 @@ public class NetworkManager : Photon.MonoBehaviour
     void OnJoinedLobby()
     {       
         Debug.Log("Joined Lobby");
+        //sets cursor to invisible while playing
         if (!PhotonNetwork.inRoom)
         {
             Cursor.visible = true;     
@@ -74,20 +76,23 @@ public class NetworkManager : Photon.MonoBehaviour
         
         Debug.Log("Connected to Room");
         PhotonNetwork.Instantiate(player.name, new Vector3(Random.Range(-50,50), 3,Random.Range(-50, 50)), Quaternion.identity, 0);
-        Cursor.lockState = CursorLockMode.Locked;
-        ScoreUI.SetActive(true);
+        Cursor.lockState = CursorLockMode.Locked; //locks cursor to window while playing
+        ScoreUI.SetActive(true); // activates scores while playing
     }
     private void Update()
     {
+        //if there are more than 2 players, start the timer
             if (PhotonNetwork.playerList.Length >= 2)
         {
             //Debug.Log(PhotonNetwork.playerList.Length);
             EndMatch();
         }
     }
+    //
     private void EndMatch()
     {
-        if (timer == endMatchTime)
+        // at the end of the time given, display winner; otherwise keep timer running
+        if (timer >= endMatchTime)
         {
             timer += 0;
             //wincondition here
