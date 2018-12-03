@@ -28,12 +28,9 @@ public class Score : MonoBehaviour/*,IPunObservable*/ {
         {
             numbPlayer = PhotonNetwork.room.PlayerCount;
         }
-        //player1Score = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Menu>().scores.y;
-        //player2Score = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Menu>().scores.w;
-        //player3Score = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Menu>().scores.z;
-        //player4Score = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Menu>().scores.x;
 
-        //scores are based on the amount of space that the splatters occupy, so they need to be multiplied by 5120 to have a significant score
+        //scores are based on the amount of space that the splatters occupy, 
+        //so they need to be multiplied by 5120 to have a significant score
 
         scores = SplatManagerSystem.instance.scores;
 
@@ -52,36 +49,43 @@ public class Score : MonoBehaviour/*,IPunObservable*/ {
 
 
         //activate a score ui every time a player joins
-
-        if (numbPlayer == 1)
+        switch (numbPlayer)
         {
-            p1.SetActive(true);
-            p2.SetActive(false);
-            p3.SetActive(false);
-            p4.SetActive(false);
-        }else if (numbPlayer == 2)
-        {
-            p1.SetActive(true);
-            p2.SetActive(true);
-            p3.SetActive(false);
-            p4.SetActive(false);
-        } else if(numbPlayer == 3)
-        {
-            p1.SetActive(true);
-            p2.SetActive(true);
-            p3.SetActive(true);
-            p4.SetActive(false);
-        } else 
-        {
-            p1.SetActive(true);
-            p2.SetActive(true);
-            p3.SetActive(true);
-            p4.SetActive(true);
+            case 4:
+                p1.SetActive(true);
+                p2.SetActive(true);
+                p3.SetActive(true);
+                p4.SetActive(true);
+                break;
+            case 3:
+                p1.SetActive(true);
+                p2.SetActive(true);
+                p3.SetActive(true);
+                p4.SetActive(false);
+                break;
+            case 2:
+                p1.SetActive(true);
+                p2.SetActive(true);
+                p3.SetActive(false);
+                p4.SetActive(false);
+                break;
+            case 1:
+                p1.SetActive(true);
+                p2.SetActive(false);
+                p3.SetActive(false);
+                p4.SetActive(false);
+                break;
+            default:
+                p1.SetActive(false);
+                p2.SetActive(false);
+                p3.SetActive(false);
+                p4.SetActive(false);
+                break;
         }
         GetHigherScore();
         
     }
-
+    //get the highest score and the player who owns it
     public void GetHigherScore()
     {
         ScoreArray[0] = player1Score;
@@ -99,21 +103,5 @@ public class Score : MonoBehaviour/*,IPunObservable*/ {
         }
 
     }
-    //public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-    //{
-    //    //if (stream.isWriting)
-    //    //{
-    //    //    stream.SendNext(p1);
-    //    //    stream.SendNext(p2);
-    //    //    stream.SendNext(p3);
-    //    //    stream.SendNext(p4);
-    //    //}
-    //    //else
-    //    //{
-    //    //    this.p1 = (GameObject)stream.ReceiveNext();
-    //    //    this.p2 = (GameObject)stream.ReceiveNext();
-    //    //    this.p3 = (GameObject)stream.ReceiveNext();
-    //    //    this.p4 = (GameObject)stream.ReceiveNext();
-    //    //}
-    //}
+    
 }
