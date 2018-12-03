@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class Login : MonoBehaviour {
 
-    public Button enterButton;
+
     public GameObject username, password;
     public Text usernameError, passwordError;
     private string Username, Password;
