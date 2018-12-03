@@ -44,9 +44,9 @@ GameObject:
   - component: {fileID: 23134973177360870}
   - component: {fileID: 95338822764556798}
   - component: {fileID: 111582852271285730}
-  - component: {fileID: 114175551230574330}
   - component: {fileID: 64877172358237466}
   - component: {fileID: 114779902574183982}
+  - component: {fileID: 114993792674579038}
   m_Layer: 0
   m_Name: Rune Sword
   m_TagString: sword
@@ -239,17 +239,6 @@ Animation:
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0
   m_CullingType: 1
---- !u!114 &114175551230574330
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1977323467709638}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96c3e527b835dfb46b39215adb7285a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114336950609377452
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -262,7 +251,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.3
-  _attackAnimation: {fileID: 114175551230574330}
+  _attackAnimation: {fileID: 0}
   cam: {fileID: 0}
   camPivot: {fileID: 0}
   playerIDinPlayer: 0
@@ -318,3 +307,14 @@ MonoBehaviour:
   instantiationId: -1
   currentMasterID: -1
   isRuntimeInstantiated: 0
+--- !u!114 &114993792674579038
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1977323467709638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96c3e527b835dfb46b39215adb7285a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

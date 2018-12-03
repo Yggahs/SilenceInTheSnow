@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class AttackAnimation : MonoBehaviour {
+
     //play animation 'attack01'
     public void Attack()
     {
