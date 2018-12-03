@@ -1845,7 +1845,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Gennaro
+  m_Text: Player 2
 --- !u!222 &256287926
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2344,7 +2344,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Gennaro
+  m_Text: Player 4
 --- !u!222 &319251145
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5634,7 +5634,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Gennaro
+  m_Text: Player 1
 --- !u!222 &817705455
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9784,7 +9784,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Gennaro
+  m_Text: Player 3
 --- !u!222 &1502808796
 CanvasRenderer:
   m_ObjectHideFlags: 0
