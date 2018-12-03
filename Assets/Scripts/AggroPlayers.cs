@@ -14,22 +14,10 @@ public class AggroPlayers : Photon.MonoBehaviour, IPunObservable {
     int moveSpeed = 3; //move speed
     [SerializeField] public int playerIDinEnemy;
     public GameObject droplets;
-
-    private float lastSynchronizationTime = 0f;
-    private float syncDelay = 0f;
-    private float syncTime = 0f;
-
-    private Vector3 syncStartPosition = Vector3.zero;
-    private Vector3 syncEndPosition = Vector3.zero;
-
-    private Quaternion syncStartPositionR = Quaternion.Euler(Vector3.zero);
-    private Quaternion syncEndPositionR = Quaternion.Euler(Vector3.zero);
-
-
     void Awake()
     {
 
-        target = GameObject.FindWithTag("Player").transform;
+        target = GameObject.FindWithTag("Player").transform; //set enemy target
         
     }
 
@@ -40,27 +28,23 @@ public class AggroPlayers : Photon.MonoBehaviour, IPunObservable {
 
     void OnTriggerEnter(Collider collision)
     {
-        //if (GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().IsAttacking == true)
-        //{
+            //if hit by a player's sword, leave a blood splatter, then die
             if (collision.gameObject.tag == "sword")
             {
                 playerIDinEnemy = collision.gameObject.transform.parent.gameObject.GetComponent<Player>().playerIDinPlayer;
                 Death();
             }
-        //}
     }
 
     void Death()
     {
-        //Debug.Log("Killed by player "+playerIDinEnemy);
         dead = true;
-        Bleed();
+        Bleed(); //spawn blood droplets
         CreateSplat();
         FindObjectOfType<SpawnEnemies>().enemycount--;
         Destroy(gameObject, 1);
-
     }
-
+    //switch color of splatter based on player id
     Vector4 ChooseChannelmask()
     {
         switch (playerIDinEnemy)
@@ -84,7 +68,7 @@ public class AggroPlayers : Photon.MonoBehaviour, IPunObservable {
         return channelMask;
     }
 
-
+    //create splat object
     void CreateSplat()
     {
         // Get how many splats are in the splat atlas
@@ -116,9 +100,11 @@ public class AggroPlayers : Photon.MonoBehaviour, IPunObservable {
 
             newSplat.scaleBias = new Vector4(splatscaleX, splatscaleY, splatsBiasX, splatsBiasY);
 
+
             SplatManagerSystem.instance.AddSplat(newSplat);
 
             GameObject.Destroy(newSplatObject);
+            
         }
     }
 
@@ -131,51 +117,41 @@ public class AggroPlayers : Photon.MonoBehaviour, IPunObservable {
             photonView.RPC("ChangePostionTo", PhotonTargets.OthersBuffered, myposition);
         }
     }
-
+    //instantiate blood droplets over network
     void Bleed()
     {
         if (photonView.isMine)
         {
             GameObject droplet = PhotonNetwork.Instantiate(droplets.name, gameObject.transform.position, Quaternion.identity, 0) as GameObject;
-            droplet.GetComponent<BulletServer>().playerIDinDroplet = playerIDinEnemy;
+            droplet.GetComponent<Droplet>().playerIDinDroplet = playerIDinEnemy;
         }
     }
         
-
+    //serialize player id who killed enemy
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
         if (stream.isWriting)
         {
-            stream.SendNext(GetComponent<Rigidbody>().position);
-            stream.SendNext(GetComponent<Rigidbody>().velocity);
-            stream.SendNext(GetComponent<Rigidbody>().rotation); //added for rotation
-            // We own this player: send the others our data
             stream.SendNext(playerIDinEnemy);
+            stream.SendNext(splatsX);
+            stream.SendNext(splatsY);
+
+
         }
         else
         {
-            Vector3 syncPosition = (Vector3)stream.ReceiveNext();
-            Vector3 syncVelocity = (Vector3)stream.ReceiveNext();
-            Quaternion syncRotation = (Quaternion)stream.ReceiveNext(); //sync object's rotation
-
-            syncTime = 0f;
-            syncDelay = Time.time - lastSynchronizationTime;
-            lastSynchronizationTime = Time.time;
-            syncEndPosition = syncPosition + syncVelocity * syncDelay;
-
-            syncEndPositionR = syncRotation * Quaternion.Euler(syncVelocity * syncDelay); //object start position for rotation
-            syncStartPosition = GetComponent<Rigidbody>().position;
-            syncStartPositionR = GetComponent<Rigidbody>().rotation; //object start position for rotation
-
-            // Network player, receive data
             this.playerIDinEnemy = (int)stream.ReceiveNext();
+            this.splatsX = (int)stream.ReceiveNext();
+            this.splatsY = (int)stream.ReceiveNext();
+
+
         }
     }
-
+    //basic enemy ai
     void FollowPlayer()
     {
         target = GameObject.FindWithTag("Player").transform;
-
+        
         if (!dead)
         {
             transform.LookAt(target);

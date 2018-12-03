@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 111582852271285730}
   - component: {fileID: 114175551230574330}
   - component: {fileID: 64877172358237466}
+  - component: {fileID: 114779902574183982}
   m_Layer: 0
   m_Name: Rune Sword
   m_TagString: sword
@@ -262,7 +263,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.3
   _attackAnimation: {fileID: 114175551230574330}
-  IsAttacking: 0
   cam: {fileID: 0}
   camPivot: {fileID: 0}
   playerIDinPlayer: 0
@@ -287,6 +287,32 @@ MonoBehaviour:
   ownershipTransfer: 0
   ObservedComponents:
   - {fileID: 114336950609377452}
+  ObservedComponentsFoldoutOpen: 1
+  viewIdField: 0
+  instantiationId: -1
+  currentMasterID: -1
+  isRuntimeInstantiated: 0
+--- !u!114 &114779902574183982
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1977323467709638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ownerId: 0
+  group: 0
+  OwnerShipWasTransfered: 0
+  prefixBackup: -1
+  synchronization: 2
+  onSerializeTransformOption: 1
+  onSerializeRigidBodyOption: 2
+  ownershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 4633995884990218}
   ObservedComponentsFoldoutOpen: 1
   viewIdField: 0
   instantiationId: -1

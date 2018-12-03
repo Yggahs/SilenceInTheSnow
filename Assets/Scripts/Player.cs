@@ -7,13 +7,13 @@ public class Player : Photon.MonoBehaviour {
     private float lastSynchronizationTime = 0f;
     private float syncDelay = 0f;
     private float syncTime = 0f;
-    public attackAnimation _attackAnimation;
+    public AttackAnimation _attackAnimation;
     private Vector3 syncStartPosition = Vector3.zero;
     private Vector3 syncEndPosition = Vector3.zero;
 
     private Quaternion syncStartPositionR = Quaternion.Euler(Vector3.zero);
     private Quaternion syncEndPositionR = Quaternion.Euler(Vector3.zero);
-    public bool IsAttacking = false;
+    //public bool IsAttacking = false;
     //relative movement
     public Transform cam;
     public Transform camPivot;
@@ -29,14 +29,15 @@ public class Player : Photon.MonoBehaviour {
     // Use this for initialization
     void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
- 
+        //show player movement over network, serialize player id and sword's mesh collider status (enabled/disabled)
         if (stream.isWriting)
         {
             stream.SendNext(GetComponent<Rigidbody>().position);
             stream.SendNext(GetComponent<Rigidbody>().velocity);
             stream.SendNext(GetComponent<Rigidbody>().rotation); //added for rotation
             stream.SendNext(playerIDinPlayer);
-            //stream.SendNext(GetComponent<Renderer>().material.color);
+            stream.SendNext(gameObject.transform.GetChild(0).GetComponent<MeshCollider>().enabled);
+            
 
         }
         else
@@ -55,6 +56,7 @@ public class Player : Photon.MonoBehaviour {
             syncStartPositionR = GetComponent<Rigidbody>().rotation; //object start position for rotation
 
             this.playerIDinPlayer = (int)stream.ReceiveNext();
+            this.gameObject.transform.GetChild(0).GetComponent<MeshCollider>().enabled = (bool)stream.ReceiveNext();
         }
 	}
 
@@ -67,11 +69,11 @@ public class Player : Photon.MonoBehaviour {
         camPivot = GetComponent<Transform>();
         lastSynchronizationTime = Time.time;
         gameObject.transform.GetChild(0).GetComponent<MeshCollider>().enabled = false;
-
+        //switch player color based on id
         switch (playerIDinPlayer)
         {
             case 4:
-                ChangeColorTo(new Vector3(0, 175, 175));
+                ChangeColorTo(new Vector3(0, 127.5f, 127.5f));
                 break;
             case 3:
                 ChangeColorTo(new Vector3(0, 255, 0));
@@ -91,8 +93,7 @@ public class Player : Photon.MonoBehaviour {
 
     private void Start()
     {
-        
-
+        //bind camera to player
         if (photonView.isMine)
         {
             Camera.main.transform.position = this.transform.position - this.transform.forward * 10 + this.transform.up * 3;
@@ -110,7 +111,7 @@ public class Player : Photon.MonoBehaviour {
             
             InputMovement();
 
-            InputColorChange();
+            //InputColorChange();
         }
         else
         {
@@ -136,22 +137,22 @@ public class Player : Photon.MonoBehaviour {
 
         transform.position += ((camF * input.y + camR * input.x)*speed); //speed of player is determined by number that multiplies the first equation
 
-        if (Input.GetKeyDown(KeyCode.Space))
-            GetComponent<Rigidbody>().MovePosition(GetComponent<Rigidbody>().position + Vector3.up * 2);
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //    GetComponent<Rigidbody>().MovePosition(GetComponent<Rigidbody>().position + Vector3.up * 2);
 
         if (Input.GetMouseButtonDown(0))
         {
-            _attackAnimation.attack();
+            _attackAnimation.Attack();
             gameObject.transform.GetChild(0).GetComponent<MeshCollider>().enabled = true;
-            Invoke("FalseAttack", 0.417f);
+            Invoke("DeactivateSword", 0.417f);
+            //Debug.Log(gameObject.transform.GetChild(0).GetComponent<MeshCollider>().enabled);
         }
     }
-
-    void FalseAttack()
+    //deactivates mesh collider for the player's sword
+    void DeactivateSword()
     {
         gameObject.transform.GetChild(0).GetComponent<MeshCollider>().enabled = false;
     }
-
     private void SyncedMovement()
     {
         syncTime += Time.deltaTime;
@@ -159,14 +160,15 @@ public class Player : Photon.MonoBehaviour {
         GetComponent<Rigidbody>().rotation = Quaternion.Lerp(syncStartPositionR, syncEndPositionR, syncTime / syncDelay); //apply synced rotation
     }
 
-    void InputColorChange()
-    {
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            ChangeColorTo(new Vector3(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f)));
-        }
-    }
+    //void InputColorChange()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.R))
+    //    {
+    //        ChangeColorTo(new Vector3(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f)));
+    //    }
+    //}
 
+    //change color of player and show over network
     [PunRPC]
     void ChangeColorTo(Vector3 color)
     {
