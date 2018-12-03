@@ -1790,7 +1790,7 @@ GameObject:
   - component: {fileID: 256287925}
   m_Layer: 5
   m_Name: PlayerName
-  m_TagString: nick2
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5579,7 +5579,7 @@ GameObject:
   - component: {fileID: 817705454}
   m_Layer: 5
   m_Name: PlayerName
-  m_TagString: nick1
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
