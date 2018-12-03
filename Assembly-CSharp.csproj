@@ -61,7 +61,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <Compile Include="Assets\Login.cs" />
+=======
+>>>>>>> BugFixing2
     <Compile Include="Assets\Photon Unity Networking\Demos\Demo2DJumpAndRunWithPhysics\Scripts\Demo2DJumpAndRun.cs" />
     <Compile Include="Assets\Photon Unity Networking\Demos\Demo2DJumpAndRunWithPhysics\Scripts\JumpAndRunMovement.cs" />
     <Compile Include="Assets\Photon Unity Networking\Demos\DemoBoxes\ColorPerPlayer.cs" />
@@ -195,6 +198,7 @@
     <Compile Include="Assets\Photon Unity Networking\UtilityScripts\UI\ButtonInsideScrollList.cs" />
     <Compile Include="Assets\Photon Unity Networking\UtilityScripts\UI\TextButtonTransition.cs" />
     <Compile Include="Assets\Photon Unity Networking\UtilityScripts\UI\TextToggleIsOnTransition.cs" />
+<<<<<<< HEAD
     <Compile Include="Assets\PhotonChatApi\ChatChannel.cs" />
     <Compile Include="Assets\PhotonChatApi\ChatClient.cs" />
     <Compile Include="Assets\PhotonChatApi\ChatDisconnectCause.cs" />
@@ -209,10 +213,20 @@
     <Compile Include="Assets\Scripts\AggroPlayers.cs" />
     <Compile Include="Assets\Scripts\AttackAnimation.cs" />
     <Compile Include="Assets\Scripts\Droplet.cs" />
+=======
+    <Compile Include="Assets\Scripts\AggroPlayers.cs" />
+    <Compile Include="Assets\Scripts\attackAnimation.cs" />
+    <Compile Include="Assets\Scripts\Droplet.cs" />
+    <Compile Include="Assets\Scripts\Login.cs" />
+>>>>>>> BugFixing2
     <Compile Include="Assets\Scripts\MatchEditorCamera.cs" />
     <Compile Include="Assets\Scripts\Menu.cs" />
     <Compile Include="Assets\Scripts\NetworkManager.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
+<<<<<<< HEAD
+=======
+    <Compile Include="Assets\Scripts\Register.cs" />
+>>>>>>> BugFixing2
     <Compile Include="Assets\Scripts\Score.cs" />
     <Compile Include="Assets\Scripts\SpawnEnemies.cs" />
     <Compile Include="Assets\Scripts\SplatMakerExample.cs" />
@@ -446,10 +460,17 @@
       <HintPath>H:/Data/GitHub/SilenceInTheSnow/Assets/Plugins/WebSocket/websocket-sharp.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Analytics">
+<<<<<<< HEAD
       <HintPath>C:/Users/k1630434/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.16/UnityEngine.Analytics.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.StandardEvents">
       <HintPath>C:/Users/k1630434/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.13/UnityEngine.StandardEvents.dll</HintPath>
+=======
+      <HintPath>C:/Users/k1628052/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.16/UnityEngine.Analytics.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.StandardEvents">
+      <HintPath>C:/Users/k1628052/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.13/UnityEngine.StandardEvents.dll</HintPath>
+>>>>>>> BugFixing2
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>C:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/unity/mscorlib.dll</HintPath>

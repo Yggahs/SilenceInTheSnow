@@ -61,6 +61,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Plugins\PhotonChatApi\ChatChannel.cs" />
+    <Compile Include="Assets\Plugins\PhotonChatApi\ChatClient.cs" />
+    <Compile Include="Assets\Plugins\PhotonChatApi\ChatDisconnectCause.cs" />
+    <Compile Include="Assets\Plugins\PhotonChatApi\ChatEventCode.cs" />
+    <Compile Include="Assets\Plugins\PhotonChatApi\ChatOperationCode.cs" />
+    <Compile Include="Assets\Plugins\PhotonChatApi\ChatParameterCode.cs" />
+    <Compile Include="Assets\Plugins\PhotonChatApi\ChatPeer.cs" />
+    <Compile Include="Assets\Plugins\PhotonChatApi\ChatState.cs" />
+    <Compile Include="Assets\Plugins\PhotonChatApi\ChatUserStatus.cs" />
+    <Compile Include="Assets\Plugins\PhotonChatApi\IChatClientListener.cs" />
     <Compile Include="Assets\Plugins\WebSocket\WebSocket.cs" />
     <None Include="Assets\Plugins\Photon3Unity3D.xml" />
     <None Include="Assets\Plugins\release_history.txt" />
@@ -281,10 +291,17 @@
       <HintPath>H:/Data/GitHub/SilenceInTheSnow/Assets/Plugins/WebSocket/websocket-sharp.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Analytics">
+<<<<<<< HEAD
       <HintPath>C:/Users/k1630434/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.16/UnityEngine.Analytics.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.StandardEvents">
       <HintPath>C:/Users/k1630434/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.13/UnityEngine.StandardEvents.dll</HintPath>
+=======
+      <HintPath>C:/Users/k1628052/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.16/UnityEngine.Analytics.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.StandardEvents">
+      <HintPath>C:/Users/k1628052/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.13/UnityEngine.StandardEvents.dll</HintPath>
+>>>>>>> BugFixing2
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>C:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/unity/mscorlib.dll</HintPath>

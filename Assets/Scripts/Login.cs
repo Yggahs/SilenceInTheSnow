@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using UnityEngine.UI;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Login : MonoBehaviour {
 
@@ -56,7 +57,8 @@ public class Login : MonoBehaviour {
 
      private IEnumerator UserLogin(string username, string password)
     {
-        
+        usernameError.enabled = false;
+        passwordError.enabled = false;
 
         WWWForm form = new WWWForm();
         form.AddField("usernamePost", username);
@@ -65,6 +67,7 @@ public class Login : MonoBehaviour {
         WWW www = new WWW(CreateUserURL, form);
         yield return www;
         print(www.text.ToString().Contains("found"));
+
         if (!string.IsNullOrEmpty(www.error)) print(www.text.ToString());
         else
         {
@@ -73,11 +76,15 @@ public class Login : MonoBehaviour {
 
                 usernameError.enabled = true;
             }
-            else if (www.text.ToString() == "Password incorrect")
+            else if (www.text.ToString().Contains("Password") == true)
             {
                 passwordError.enabled = true;
             }
-            else print("porcodio");
+            else
+            {
+                PhotonNetwork.player.NickName = username;
+                SceneManager.LoadScene(1);
+            }
         }
 
 
