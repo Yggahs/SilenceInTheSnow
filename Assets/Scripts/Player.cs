@@ -204,16 +204,8 @@ public class Player : Photon.MonoBehaviour, IPunObservable
         if (stream.isWriting)
         {
             stream.SendNext(GameObject.FindGameObjectWithTag("nick1").GetComponent<Text>().text);
-            stream.SendNext(GameObject.FindGameObjectWithTag("nick2").GetComponent<Text>().text);
-            stream.SendNext(GameObject.FindGameObjectWithTag("nick3").GetComponent<Text>().text);
-            stream.SendNext(GameObject.FindGameObjectWithTag("nick4").GetComponent<Text>().text);
         }
-        else
-        {
-            GameObject.FindGameObjectWithTag("nick1").GetComponent<Text>().text = (string)stream.ReceiveNext();
-            GameObject.FindGameObjectWithTag("nick2").GetComponent<Text>().text = (string)stream.ReceiveNext();
-            GameObject.FindGameObjectWithTag("nick3").GetComponent<Text>().text = (string)stream.ReceiveNext();
-            GameObject.FindGameObjectWithTag("nick4").GetComponent<Text>().text = (string)stream.ReceiveNext();
-        }
+        else GameObject.FindGameObjectWithTag("nick1").GetComponent<Text>().text = (string) stream.ReceiveNext();
+        
     }
 }
