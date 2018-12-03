@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Droplet : Photon.MonoBehaviour, IPunObservable
 {
+    public AudioClip splat;
+
     Vector4 channelMask = new Vector4(1, 0, 0, 0);
 
     int splatsX = 1;
@@ -61,6 +63,9 @@ public class Droplet : Photon.MonoBehaviour, IPunObservable
     //create splatter on the ground
     void CreateSplat(Collision other)
     {
+        AudioSource.PlayClipAtPoint(splat, this.transform.position);
+        
+
         // Get how many splats are in the splat atlas
         splatsX = SplatManagerSystem.instance.splatsX;
         splatsY = SplatManagerSystem.instance.splatsY;
