@@ -114,7 +114,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   splat: {fileID: 8300000, guid: a39d96a0ede8e014d844bea179f4d896, type: 3}
-  splatScale: 1
+  splatScale: 2
   Plane: {fileID: 1287871376911092, guid: 2f6bcbc2eda033d4cada0312cfb3920e, type: 2}
   Player: {fileID: 1653157656153582, guid: f742a3289be161f47b2eb7b5a57e9501, type: 2}
   playerIDinDroplet: 0

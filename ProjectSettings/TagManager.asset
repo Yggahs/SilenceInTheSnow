@@ -7,6 +7,10 @@ TagManager:
   - blood
   - sword
   - Enemy
+  - emailError
+  - ErrorRegistration
+  - nick1
+  - nick2
   layers:
   - Default
   - TransparentFX

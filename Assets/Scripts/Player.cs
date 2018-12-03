@@ -73,7 +73,7 @@ public class Player : Photon.MonoBehaviour {
         switch (playerIDinPlayer)
         {
             case 4:
-                ChangeColorTo(new Vector3(0, 127.5f, 127.5f));
+                ChangeColorTo(new Vector3(255, 165, 0));
                 break;
             case 3:
                 ChangeColorTo(new Vector3(0, 255, 0));

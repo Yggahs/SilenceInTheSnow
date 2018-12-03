@@ -140,7 +140,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 981a9509a1e200d4db2c47056b2d6df4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  splatScale: 5
+  death1: {fileID: 8300000, guid: ece099de91d8622488ee124b9d784898, type: 3}
+  death2: {fileID: 8300000, guid: 75df5e947d51fe74fb8185bc8397f90c, type: 3}
+  death3: {fileID: 8300000, guid: 1e7f690c97867814991cb53a4f8fda05, type: 3}
+  splatScale: 10
   playerIDinEnemy: 0
   droplets: {fileID: 1297777264866016, guid: 046eaaf7db833e845ad5f0a2bded3334, type: 2}
 --- !u!136 &136545977772154498

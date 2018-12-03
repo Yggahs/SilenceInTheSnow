@@ -251,7 +251,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.3
-  _attackAnimation: {fileID: 0}
+  _attackAnimation: {fileID: 114993792674579038}
   cam: {fileID: 0}
   camPivot: {fileID: 0}
   playerIDinPlayer: 0

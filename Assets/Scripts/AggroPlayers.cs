@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AggroPlayers : Photon.MonoBehaviour, IPunObservable {
     Vector4 channelMask = new Vector4(1, 0, 0, 0);
-
+    public AudioClip death1, death2, death3;
     int splatsX = 1;
     int splatsY = 1;
     bool dead = false;
@@ -31,7 +31,21 @@ public class AggroPlayers : Photon.MonoBehaviour, IPunObservable {
             //if hit by a player's sword, leave a blood splatter, then die
             if (collision.gameObject.tag == "sword")
             {
-                playerIDinEnemy = collision.gameObject.transform.parent.gameObject.GetComponent<Player>().playerIDinPlayer;
+                int i = Random.Range(1, 4);
+            switch (i)
+            {
+                case 3:
+                    AudioSource.PlayClipAtPoint(death3, this.transform.position);
+                    break;
+                case 2:
+                    AudioSource.PlayClipAtPoint(death2, this.transform.position);
+                    break;
+                case 1:
+                    AudioSource.PlayClipAtPoint(death1, this.transform.position);
+                    break;                
+            }
+              
+            playerIDinEnemy = collision.gameObject.transform.parent.gameObject.GetComponent<Player>().playerIDinPlayer;
                 Death();
             }
     }
