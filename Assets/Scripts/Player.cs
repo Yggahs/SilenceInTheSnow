@@ -201,11 +201,58 @@ public class Player : Photon.MonoBehaviour, IPunObservable
 
     void IPunObservable.OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
+
         if (stream.isWriting)
         {
-            stream.SendNext(GameObject.FindGameObjectWithTag("nick1").GetComponent<Text>().text);
+            switch (PhotonNetwork.player.ID)
+            {
+                case 4:
+                    stream.SendNext(GameObject.FindGameObjectWithTag("nick4").GetComponent<Text>().text);
+                    break;
+                case 3:
+                    stream.SendNext(GameObject.FindGameObjectWithTag("nick3").GetComponent<Text>().text);
+                    break;
+                case 2:
+                    stream.SendNext(GameObject.FindGameObjectWithTag("nick2").GetComponent<Text>().text);
+                    break;
+                case 1:
+                    stream.SendNext(GameObject.FindGameObjectWithTag("nick1").GetComponent<Text>().text);
+                    print("kek");
+                    break;
+
+            }
+            
+
         }
-        else GameObject.FindGameObjectWithTag("nick1").GetComponent<Text>().text = (string) stream.ReceiveNext();
+        else
+        {
+            switch (PhotonNetwork.player.ID)
+            {
+                case 4:
+                    GameObject.FindGameObjectWithTag("nick1").GetComponent<Text>().text = (string)stream.ReceiveNext();
+                    GameObject.FindGameObjectWithTag("nick2").GetComponent<Text>().text = (string)stream.ReceiveNext();
+                    GameObject.FindGameObjectWithTag("nick3").GetComponent<Text>().text = (string)stream.ReceiveNext();
+                    break;
+                case 3:
+                    GameObject.FindGameObjectWithTag("nick1").GetComponent<Text>().text = (string)stream.ReceiveNext();
+                    GameObject.FindGameObjectWithTag("nick2").GetComponent<Text>().text = (string)stream.ReceiveNext();
+                    GameObject.FindGameObjectWithTag("nick4").GetComponent<Text>().text = (string)stream.ReceiveNext();
+                    break;
+                case 2:
+                    GameObject.FindGameObjectWithTag("nick1").GetComponent<Text>().text = (string)stream.ReceiveNext();
+                    GameObject.FindGameObjectWithTag("nick3").GetComponent<Text>().text = (string)stream.ReceiveNext();
+                    GameObject.FindGameObjectWithTag("nick4").GetComponent<Text>().text = (string)stream.ReceiveNext();
+                    break;
+                case 1:
+                    GameObject.FindGameObjectWithTag("nick2").GetComponent<Text>().text = (string)stream.ReceiveNext();
+                    GameObject.FindGameObjectWithTag("nick3").GetComponent<Text>().text = (string)stream.ReceiveNext();
+                    GameObject.FindGameObjectWithTag("nick4").GetComponent<Text>().text = (string)stream.ReceiveNext();
+                    print("kek");
+                    break;
+
+            }
+
+        }
         
     }
 }
