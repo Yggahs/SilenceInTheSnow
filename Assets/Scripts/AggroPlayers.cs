@@ -100,6 +100,7 @@ public class AggroPlayers : Photon.MonoBehaviour, IPunObservable {
 
             newSplat.scaleBias = new Vector4(splatscaleX, splatscaleY, splatsBiasX, splatsBiasY);
 
+
             SplatManagerSystem.instance.AddSplat(newSplat);
 
             GameObject.Destroy(newSplatObject);
@@ -132,17 +133,25 @@ public class AggroPlayers : Photon.MonoBehaviour, IPunObservable {
         if (stream.isWriting)
         {
             stream.SendNext(playerIDinEnemy);
+            stream.SendNext(splatsX);
+            stream.SendNext(splatsY);
+
+
         }
         else
         {
             this.playerIDinEnemy = (int)stream.ReceiveNext();
+            this.splatsX = (int)stream.ReceiveNext();
+            this.splatsY = (int)stream.ReceiveNext();
+
+
         }
     }
     //basic enemy ai
     void FollowPlayer()
     {
         target = GameObject.FindWithTag("Player").transform;
-
+        
         if (!dead)
         {
             transform.LookAt(target);

@@ -13,14 +13,17 @@ public class NetworkManager : Photon.MonoBehaviour
     public GameObject droplets;
     public GameObject ScoreUI;
     float timer = 0f;
-    float endMatchTime = 600f;
-    public Text text;
+    float endMatchTime = 300f;
+    public Text TimerText;
+    public Text WinnerText;
     
     // Use this for initialization
     void Start()
     {
         PhotonNetwork.ConnectUsingSettings("v4.2");
         ScoreUI.SetActive(false); //sets scores inactive while not playing
+        WinnerText.GetComponent<Text>().enabled = false;
+        TimerText.GetComponent<Text>().enabled = false;
     }
     //create server / join room buttons
     void OnGUI()
@@ -69,7 +72,8 @@ public class NetworkManager : Photon.MonoBehaviour
         {
             Cursor.visible = false;
         }
-        
+        Cursor.lockState = CursorLockMode.None; //unlocks cursor to window while playing
+
     }
     void OnJoinedRoom()
     {
@@ -84,6 +88,7 @@ public class NetworkManager : Photon.MonoBehaviour
         //if there are more than 2 players, start the timer
             if (PhotonNetwork.playerList.Length >= 2)
         {
+            TimerText.GetComponent<Text>().enabled = true;
             //Debug.Log(PhotonNetwork.playerList.Length);
             EndMatch();
         }
@@ -95,15 +100,50 @@ public class NetworkManager : Photon.MonoBehaviour
         if (timer >= endMatchTime)
         {
             timer += 0;
-            //wincondition here
+            Debug.Log("player "+ ScoreUI.GetComponent<Score>().highestplayer+1 + " wins with " + ScoreUI.GetComponent<Score>().max);
+            string winnerUI = string.Concat("Player " + (ScoreUI.GetComponent<Score>().highestplayer + 1) + " wins with " + ScoreUI.GetComponent<Score>().max + "points");
+            WinnerText.text = winnerUI;
+            WinnerText.GetComponent<Text>().enabled = true;
+            Invoke("Kickplayers",5f);
         }
         else
         {
             timer += Time.deltaTime;
-            text.text = timer.ToString();
+            TimerText.text = timer.ToString();
         }
         string TimerUI = string.Concat(timer.ToString(), "/", endMatchTime.ToString());
-        text.text = TimerUI;        
+        TimerText.text = TimerUI;        
     }
+    void Kickplayers()
+    {
+        
+        for (int i = 0; i <= 3; i++)
+        {
+            PhotonNetwork.CloseConnection(PhotonNetwork.playerList[i]); //kicks players after the match
+        }
+        //Destroyenemies();
+        //Destroyplayers();
+        Application.Quit();
+    }
+    ////destroys all players
+    //void Destroyplayers()
+    //{
+    //    GameObject[] names = GameObject.FindGameObjectsWithTag("Player");
+
+    //    foreach (GameObject item in names)
+    //    {
+    //        Destroy(item);
+    //    }
+    //}
+    ////destroys all enemies
+    //void Destroyenemies()
+    //{
+    //    GameObject[] names = GameObject.FindGameObjectsWithTag("Enemy");
+
+    //    foreach (GameObject item in names)
+    //    {
+    //        Destroy(item);
+    //    }
+    //}
 }
 

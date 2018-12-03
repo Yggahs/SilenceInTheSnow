@@ -4,25 +4,26 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 
-public class Score : MonoBehaviour {
+public class Score : MonoBehaviour/*,IPunObservable*/ {
 
-    float player1Score;
-    float player3Score, player4Score,player2Score;
+    float player1Score, player3Score, player4Score, player2Score;
     public GameObject p1, p2, p3, p4;
     int numbPlayer;
     public Text score1, score2, score3, score4;
-    Vector4 scores; 
-
+    Vector4 scores;
+    float[] ScoreArray = new float [4];
+    public int max = 0;
+    public int highestplayer = 0;
+    
     // Use this for initialization
     void Start ()
     {
-        
-
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
+       
         if (PhotonNetwork.inRoom == true)
         {
             numbPlayer = PhotonNetwork.room.PlayerCount;
@@ -77,5 +78,42 @@ public class Score : MonoBehaviour {
             p3.SetActive(true);
             p4.SetActive(true);
         }
+        GetHigherScore();
+        
     }
+
+    public void GetHigherScore()
+    {
+        ScoreArray[0] = player1Score;
+        ScoreArray[1] = player2Score;
+        ScoreArray[2] = player3Score;
+        ScoreArray[3] = player4Score;
+
+        for (int i = 0; i < ScoreArray.Length; i++)
+        {
+            if (ScoreArray[i] > max)
+            {
+                highestplayer = i;
+                max = (int)ScoreArray[i];
+            }
+        }
+
+    }
+    //public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    //{
+    //    //if (stream.isWriting)
+    //    //{
+    //    //    stream.SendNext(p1);
+    //    //    stream.SendNext(p2);
+    //    //    stream.SendNext(p3);
+    //    //    stream.SendNext(p4);
+    //    //}
+    //    //else
+    //    //{
+    //    //    this.p1 = (GameObject)stream.ReceiveNext();
+    //    //    this.p2 = (GameObject)stream.ReceiveNext();
+    //    //    this.p3 = (GameObject)stream.ReceiveNext();
+    //    //    this.p4 = (GameObject)stream.ReceiveNext();
+    //    //}
+    //}
 }
