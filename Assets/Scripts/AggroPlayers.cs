@@ -134,6 +134,7 @@ public class AggroPlayers : Photon.MonoBehaviour, IPunObservable {
     //instantiate blood droplets over network
     void Bleed()
     {
+        
         if (photonView.isMine)
         {
             GameObject droplet = PhotonNetwork.Instantiate(droplets.name, gameObject.transform.position, Quaternion.identity, 0) as GameObject;

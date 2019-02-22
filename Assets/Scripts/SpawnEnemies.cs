@@ -19,7 +19,7 @@ public class SpawnEnemies : Photon.MonoBehaviour {
     //if there are more than 2 players, enemies will start spawning; if a spawner has spawned more than 10 enemis, they will stop spawning
     void SpawnEnemy()
     {
-        if (PhotonNetwork.playerList.Length >= 2)
+        if (PhotonNetwork.playerList.Length >= 1)
         {
             if (enemycount <= 9)
             {

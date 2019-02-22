@@ -24,7 +24,11 @@ public class Player : Photon.MonoBehaviour/*, IPunObservable*/
     float heading = 0;
 
     Vector2 input;
-    
+
+    Vector3 PlayerPos;
+    Vector3 PlayerVelocity;
+    Quaternion PlayerRot;
+   
 
 
 
@@ -41,7 +45,7 @@ public class Player : Photon.MonoBehaviour/*, IPunObservable*/
             stream.SendNext(GetComponent<Rigidbody>().rotation); //added for rotation
             stream.SendNext(playerIDinPlayer);
             stream.SendNext(gameObject.transform.GetChild(0).GetComponent<MeshCollider>().enabled);
-            
+
 
         }
         else
@@ -59,12 +63,13 @@ public class Player : Photon.MonoBehaviour/*, IPunObservable*/
             syncStartPosition = GetComponent<Rigidbody>().position;
             syncStartPositionR = GetComponent<Rigidbody>().rotation; //object start position for rotation
 
-            this.playerIDinPlayer = (int)stream.ReceiveNext();
-            this.gameObject.transform.GetChild(0).GetComponent<MeshCollider>().enabled = (bool)stream.ReceiveNext();
+            playerIDinPlayer = (int)stream.ReceiveNext();
+            gameObject.transform.GetChild(0).GetComponent<MeshCollider>().enabled = (bool)stream.ReceiveNext();
         }
-	}
+    }
 
-    
+
+
     void Awake()
     {
         
@@ -72,7 +77,10 @@ public class Player : Photon.MonoBehaviour/*, IPunObservable*/
         cam = GetComponent<Transform>();
         camPivot = GetComponent<Transform>();
         lastSynchronizationTime = Time.time;
-        gameObject.transform.GetChild(0).GetComponent<MeshCollider>().enabled = false;
+        
+
+
+
         //switch player color based on id
         switch (playerIDinPlayer)
         {
@@ -97,14 +105,16 @@ public class Player : Photon.MonoBehaviour/*, IPunObservable*/
 
     private void Start()
     {
+
         //bind camera to player
         if (photonView.isMine)
         {
             Camera.main.transform.position = this.transform.position - this.transform.forward * 10 + this.transform.up * 3;
             Camera.main.transform.LookAt(this.transform.position);
             Camera.main.transform.parent = this.transform;
-
-            switch(PhotonNetwork.player.ID)
+            
+            DeactivateSword();
+            switch (PhotonNetwork.player.ID)
             {
                 case 4:
                     GameObject.FindGameObjectWithTag("nick4").GetComponent<Text>().text = PhotonNetwork.player.NickName;
@@ -117,7 +127,6 @@ public class Player : Photon.MonoBehaviour/*, IPunObservable*/
                     break;
                 case 1:
                     GameObject.FindGameObjectWithTag("nick1").GetComponent<Text>().text = PhotonNetwork.player.NickName;
-                    print("kek");
                     break;
 
             }
@@ -125,14 +134,14 @@ public class Player : Photon.MonoBehaviour/*, IPunObservable*/
     }
 
     // Update is called once per frame
-    void Update ()
+    void Update()
     {
-        
+
         if (photonView.isMine)
         {
-            
-            InputMovement();
 
+            InputMovement();
+            
             //InputColorChange();
         }
         else
@@ -157,7 +166,7 @@ public class Player : Photon.MonoBehaviour/*, IPunObservable*/
         camF = camF.normalized;
         camR = camR.normalized;
 
-        transform.position += ((camF * input.y + camR * input.x)*speed); //speed of player is determined by number that multiplies the first equation
+        transform.position += ((camF * input.y + camR * input.x) * speed); //speed of player is determined by number that multiplies the first equation
 
         //if (Input.GetKeyDown(KeyCode.Space))
         //    GetComponent<Rigidbody>().MovePosition(GetComponent<Rigidbody>().position + Vector3.up * 2);
@@ -182,14 +191,6 @@ public class Player : Photon.MonoBehaviour/*, IPunObservable*/
         GetComponent<Rigidbody>().rotation = Quaternion.Lerp(syncStartPositionR, syncEndPositionR, syncTime / syncDelay); //apply synced rotation
     }
 
-    //void InputColorChange()
-    //{
-    //    if (Input.GetKeyDown(KeyCode.R))
-    //    {
-    //        ChangeColorTo(new Vector3(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f)));
-    //    }
-    //}
-
     //change color of player and show over network
     [PunRPC]
     void ChangeColorTo(Vector3 color)
@@ -198,59 +199,6 @@ public class Player : Photon.MonoBehaviour/*, IPunObservable*/
         if (photonView.isMine)
             photonView.RPC("ChangeColorTo", PhotonTargets.OthersBuffered, color);
     }
+}
 
-    //void IPunObservable.OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-    //{
-
-    //    if (stream.isWriting)
-    //    {
-    //        switch (PhotonNetwork.player.ID)
-    //        {
-    //            case 4:
-    //                stream.SendNext(GameObject.FindGameObjectWithTag("nick4").GetComponent<Text>().text);
-    //                break;
-    //            case 3:
-    //                stream.SendNext(GameObject.FindGameObjectWithTag("nick3").GetComponent<Text>().text);
-    //                break;
-    //            case 2:
-    //                stream.SendNext(GameObject.FindGameObjectWithTag("nick2").GetComponent<Text>().text);
-    //                break;
-    //            case 1:
-    //                stream.SendNext(GameObject.FindGameObjectWithTag("nick1").GetComponent<Text>().text);
-    //                print("kek");
-    //                break;
-
-    //        }
-    //    }
-    //    else
-    //    {
-    //        switch (PhotonNetwork.player.ID)
-    //        {
-    //            case 4:
-    //                GameObject.FindGameObjectWithTag("nick1").GetComponent<Text>().text = (string)stream.ReceiveNext();
-    //                GameObject.FindGameObjectWithTag("nick2").GetComponent<Text>().text = (string)stream.ReceiveNext();
-    //                GameObject.FindGameObjectWithTag("nick3").GetComponent<Text>().text = (string)stream.ReceiveNext();
-    //                break;
-    //            case 3:
-    //                GameObject.FindGameObjectWithTag("nick1").GetComponent<Text>().text = (string)stream.ReceiveNext();
-    //                GameObject.FindGameObjectWithTag("nick2").GetComponent<Text>().text = (string)stream.ReceiveNext();
-    //                GameObject.FindGameObjectWithTag("nick4").GetComponent<Text>().text = (string)stream.ReceiveNext();
-    //                break;
-    //            case 2:
-    //                GameObject.FindGameObjectWithTag("nick1").GetComponent<Text>().text = (string)stream.ReceiveNext();
-    //                GameObject.FindGameObjectWithTag("nick3").GetComponent<Text>().text = (string)stream.ReceiveNext();
-    //                GameObject.FindGameObjectWithTag("nick4").GetComponent<Text>().text = (string)stream.ReceiveNext();
-    //                break;
-    //            case 1:
-    //                GameObject.FindGameObjectWithTag("nick2").GetComponent<Text>().text = (string)stream.ReceiveNext();
-    //                GameObject.FindGameObjectWithTag("nick3").GetComponent<Text>().text = (string)stream.ReceiveNext();
-    //                GameObject.FindGameObjectWithTag("nick4").GetComponent<Text>().text = (string)stream.ReceiveNext();
-    //                print("kek");
-    //                break;
-
-    //        }
-
-        }
-        
-//    }
-//}
+    

@@ -1,6 +1,6 @@
 WindowsStandalone
 PlayerPath?
-C:/Users/aless/Desktop/UnityBuilds/SitS Optimization/multiplayer test 2.exe
+H:/Data/unitybuild/multiplayer test 2.exe
 SceneListBegin?
 Assets/Scenes/Login Scene.unity
 Assets/Scenes/SampleScene/SampleScenew.unity
