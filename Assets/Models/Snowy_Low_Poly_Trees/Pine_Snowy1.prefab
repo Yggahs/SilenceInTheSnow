@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33000013540128620}
   - component: {fileID: 23000012730164974}
   - component: {fileID: 64000011215493686}
+  - component: {fileID: 205263327677240336}
   m_Layer: 0
   m_Name: Pine_Snowy1
   m_TagString: Untagged
@@ -100,3 +101,25 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300006, guid: e6ec39770b6dbe04f9cbd7ea19e0c7ef, type: 3}
+--- !u!205 &205263327677240336
+LODGroup:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011914158716}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0, y: 0, z: 0}
+  m_Size: 1
+  m_FadeMode: 2
+  m_AnimateCrossFading: 0
+  m_LODs:
+  - screenRelativeHeight: 0.999
+    fadeTransitionWidth: 0
+    renderers: []
+  - screenRelativeHeight: 0.999
+    fadeTransitionWidth: 0
+    renderers: []
+  - screenRelativeHeight: 0.3507883
+    fadeTransitionWidth: 0
+    renderers: []
+  m_Enabled: 1
